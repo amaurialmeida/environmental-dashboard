@@ -1,13 +1,4 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
-
-from src.translations import TRANSLATIONS
-
-from src.pages.climate import show_climate
-from src.pages.air_quality import show_air
-from src.pages.deforestation import show_forest
-from src.pages.renewable_energy import show_energy
-from src.pages.urban_heat import show_urban
 
 st.set_page_config(
     page_title="Environmental Intelligence Platform",
@@ -15,59 +6,30 @@ st.set_page_config(
     layout="wide"
 )
 
-if "lang" not in st.session_state:
-    st.session_state.lang = "en"
+st.title("🌎 Environmental Intelligence Platform")
+st.markdown("Modern Big Data + AI Dashboard")
 
-col1, col2, col3, col4 = st.columns([8,1,1,1])
+pages = [
+    "Climate Analytics",
+    "Air Quality",
+    "Deforestation",
+    "Renewable Energy",
+    "Urban Heat"
+]
 
-with col2:
-    if st.button("🇧🇷"):
-        st.session_state.lang = "pt"
+selected = st.sidebar.radio("Select Dashboard", pages)
 
-with col3:
-    if st.button("🇺🇸"):
-        st.session_state.lang = "en"
+if selected == "Climate Analytics":
+    exec(open("src/pages/climate.py").read())
 
-with col4:
-    if st.button("🇪🇸"):
-        st.session_state.lang = "es"
+elif selected == "Air Quality":
+    exec(open("src/pages/air_quality.py").read())
 
-t = TRANSLATIONS[st.session_state.lang]
+elif selected == "Deforestation":
+    exec(open("src/pages/deforestation.py").read())
 
-st.title(f"🌎 {t['title']}")
-st.caption(t["subtitle"])
+elif selected == "Renewable Energy":
+    exec(open("src/pages/renewable_energy.py").read())
 
-with st.sidebar:
-    selected = option_menu(
-        menu_title=t["select_dashboard"],
-        options=[
-            t["climate"],
-            t["air"],
-            t["forest"],
-            t["energy"],
-            t["urban"]
-        ],
-        icons=[
-            "globe",
-            "wind",
-            "tree",
-            "lightning",
-            "geo-alt"
-        ],
-        default_index=0
-    )
-
-if selected == t["climate"]:
-    show_climate(t)
-
-elif selected == t["air"]:
-    show_air(t)
-
-elif selected == t["forest"]:
-    show_forest(t)
-
-elif selected == t["energy"]:
-    show_energy(t)
-
-elif selected == t["urban"]:
-    show_urban(t)
+elif selected == "Urban Heat":
+    exec(open("src/pages/urban_heat.py").read())
