@@ -1,18 +1,21 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 import numpy as np
+import plotly.express as px
 
-st.header("🌫 Air Quality Dashboard")
+def show_air(t):
+    st.header(f"🌫 {t['air']}")
 
-cities = ["São Paulo", "Rio", "Santiago", "Buenos Aires"]
-aqi = np.random.randint(20, 180, len(cities))
+    df = pd.DataFrame({
+        "city": ["São Paulo", "Rio", "Santiago", "New York"],
+        "aqi": np.random.randint(20, 180, 4)
+    })
 
-df = pd.DataFrame({
-    "city": cities,
-    "aqi": aqi
-})
+    fig = px.bar(
+        df,
+        x="city",
+        y="aqi",
+        title=t["air"]
+    )
 
-fig = px.bar(df, x="city", y="aqi", title="Air Quality Index")
-
-st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True)

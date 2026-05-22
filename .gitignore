@@ -1,5 +1,4 @@
 __pycache__/
-.DS_Store
 *.pyc
-.streamlit/secrets.toml
 venv/
+.DS_Store
