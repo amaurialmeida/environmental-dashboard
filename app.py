@@ -1,6 +1,7 @@
 import streamlit as st
 import plotly.express as px
 import polars as pl
+import pydeck as pdk
 
 # Configuração futurista
 st.set_page_config(page_title="Environmental Dashboard V2", layout="wide")
@@ -21,7 +22,9 @@ menu = st.sidebar.selectbox("📊 Projetos", [
     "Qualidade da água",
     "Monitoramento sísmico",
     "Espécies invasoras",
-    "Previsão El Niño"
+    "Abelhas sem ferrão",
+    "Previsão El Niño",
+    "Mudanças climáticas globais"
 ])
 
 # ---- Funções de cada módulo ----
@@ -67,10 +70,22 @@ def invasoras():
     fig = px.area(df.to_pandas(), x="ano", y="area_afetada", title="Espécies Invasoras")
     st.plotly_chart(fig, use_container_width=True)
 
+def abelhas_sem_ferrao():
+    df = pl.DataFrame({"ano":[2018,2019,2020,2021,2022],"populacao":[200,220,250,270,300]})
+    st.metric("🐝 Abelhas sem Ferrão", f"{df['populacao'].mean():.0f}")
+    fig = px.line(df.to_pandas(), x="ano", y="populacao", title="Abelhas sem Ferrão")
+    st.plotly_chart(fig, use_container_width=True)
+
 def el_nino():
     df = pl.DataFrame({"ano":[2018,2019,2020,2021,2022],"impacto":[0.2,0.3,0.5,0.4,0.6]})
     st.metric("🔥 Impacto Médio", f"{df['impacto'].mean():.2f}")
     fig = px.line(df.to_pandas(), x="ano", y="impacto", title="Previsão El Niño")
+    st.plotly_chart(fig, use_container_width=True)
+
+def mudancas_climaticas():
+    df = pl.DataFrame({"ano":[2018,2019,2020,2021,2022],"co2":[2.1,2.3,2.5,2.7,2.9]})
+    st.metric("🌍 CO₂ Médio", f"{df['co2'].mean():.2f} t")
+    fig = px.line(df.to_pandas(), x="ano", y="co2", title="Mudanças Climáticas Globais")
     st.plotly_chart(fig, use_container_width=True)
 
 # ---- Roteamento ----
@@ -81,4 +96,6 @@ elif menu == "Potencial eólico": eolico()
 elif menu == "Qualidade da água": agua()
 elif menu == "Monitoramento sísmico": sismos()
 elif menu == "Espécies invasoras": invasoras()
+elif menu == "Abelhas sem ferrão": abelhas_sem_ferrao()
 elif menu == "Previsão El Niño": el_nino()
+elif menu == "Mudanças climáticas globais": mudancas_climaticas()

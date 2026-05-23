@@ -5,3 +5,4 @@ duckdb
 pydeck
 scikit-learn
 pandas
+folium
