@@ -50,4 +50,35 @@ def eolico():
     st.plotly_chart(fig, use_container_width=True)
 
 def agua():
-    df =
+    df = pl.DataFrame({"ano":[2018,2019,2020,2021,2022],"iqa":[80,78,75,70,68]})
+    st.metric("💧 IQA Médio", f"{df['iqa'].mean():.0f}")
+    fig = px.bar(df.to_pandas(), x="ano", y="iqa", title="Qualidade da Água")
+    st.plotly_chart(fig, use_container_width=True)
+
+def sismos():
+    df = pl.DataFrame({"ano":[2018,2019,2020,2021,2022],"eventos":[50,60,55,70,80]})
+    st.metric("🌍 Eventos Sísmicos", f"{df['eventos'].sum()}")
+    fig = px.line(df.to_pandas(), x="ano", y="eventos", title="Monitoramento Sísmico")
+    st.plotly_chart(fig, use_container_width=True)
+
+def invasoras():
+    df = pl.DataFrame({"ano":[2018,2019,2020,2021,2022],"area_afetada":[100,120,150,180,200]})
+    st.metric("🌱 Área Afetada", f"{df['area_afetada'].max()} km²")
+    fig = px.area(df.to_pandas(), x="ano", y="area_afetada", title="Espécies Invasoras")
+    st.plotly_chart(fig, use_container_width=True)
+
+def el_nino():
+    df = pl.DataFrame({"ano":[2018,2019,2020,2021,2022],"impacto":[0.2,0.3,0.5,0.4,0.6]})
+    st.metric("🔥 Impacto Médio", f"{df['impacto'].mean():.2f}")
+    fig = px.line(df.to_pandas(), x="ano", y="impacto", title="Previsão El Niño")
+    st.plotly_chart(fig, use_container_width=True)
+
+# ---- Roteamento ----
+if menu == "Temperaturas globais": temperaturas()
+elif menu == "Energia solar": energia_solar()
+elif menu == "Colapso das abelhas": abelhas()
+elif menu == "Potencial eólico": eolico()
+elif menu == "Qualidade da água": agua()
+elif menu == "Monitoramento sísmico": sismos()
+elif menu == "Espécies invasoras": invasoras()
+elif menu == "Previsão El Niño": el_nino()
