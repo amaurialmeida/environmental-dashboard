@@ -6,6 +6,6 @@ st.markdown("# ?? Energia Solar - EarthMax")
 col1, col2, col3 = st.columns(3)
 with col1: futuristic_kpi("Capacidade Global", "1.6 TW", 28)
 with col2: futuristic_kpi("Crescimento 2025", "+42%", 42)
-with col3: futuristic_kpi("Países Líderes", "8", 0)
+with col3: futuristic_kpi("PaÃ­ses LÃ­deres", "8", 0)
 
 st.info("Dashboard de Energia Solar em desenvolvimento - integre dados do seu projeto anterior.")
