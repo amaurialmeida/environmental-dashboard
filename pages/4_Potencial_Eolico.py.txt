@@ -1,0 +1,12 @@
+import streamlit as st
+from utils.components import futuristic_kpi
+
+st.markdown("# ??? Potencial Eólico - EarthMax")
+
+col1, col2, col3, col4 = st.columns(4)
+with col1: futuristic_kpi("Potencial Global", "120 TW", 15)
+with col2: futuristic_kpi("Capacidade Instalada", "900 GW", 22)
+with col3: futuristic_kpi("Brasil (Ranking)", "8º", 0)
+with col4: futuristic_kpi("Crescimento Anual", "+18%", 18)
+
+st.info("?? Integre aqui mapas de velocidade de vento com PyDeck.")
