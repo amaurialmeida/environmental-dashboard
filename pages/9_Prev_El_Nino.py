@@ -1,7 +1,7 @@
 import streamlit as st
 from utils.components import futuristic_kpi
 
-st.markdown("# ?? Previs„o El NiÒo - EarthMax")
+st.markdown("# ?? Previs√£o El Ni√±o - EarthMax")
 
 col1, col2, col3 = st.columns(3)
 with col1: futuristic_kpi("Probabilidade 2026", "68%", 0)
