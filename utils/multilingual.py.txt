@@ -1,0 +1,11 @@
+translations = {
+    "pt": {"welcome": "Bem-vindo ao EarthMax", ...},
+    "en": {"welcome": "Welcome to EarthMax", ...},
+    "es": {"welcome": "Bienvenido a EarthMax", ...}
+}
+
+def get_text(key, lang="pt"):
+    return translations.get(lang, translations["pt"]).get(key, key)
+
+def set_language(lang_code):
+    st.session_state.lang = lang_code

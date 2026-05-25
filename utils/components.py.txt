@@ -1,0 +1,24 @@
+import streamlit as st
+
+def futuristic_kpi(label, value, delta=None, color="#2ecc71"):
+    delta_str = ""
+    if delta is not None:
+        arrow = "?" if delta > 0 else "?"
+        delta_color = "#2ecc71" if delta > 0 else "#e74c3c"
+        delta_str = f'<span style="color:{delta_color}; font-size:1rem;">{arrow} {abs(delta)}%</span>'
+    
+    st.markdown(f"""
+    <div style="background:rgba(10,20,33,0.85); border:2px solid {color}; border-radius:15px; padding:20px; text-align:center; box-shadow: 0 0 20px rgba(46,204,113,0.3);">
+        <p style="color:#888; margin:0; font-size:0.95rem;">{label}</p>
+        <h2 style="color:{color}; margin:8px 0 5px 0; font-size:2.2rem;">{value}</h2>
+        {delta_str}
+    </div>
+    """, unsafe_allow_html=True)
+
+def futuristic_card(title, content):
+    st.markdown(f"""
+    <div style="background:#0a1421; border-left:5px solid #2ecc71; padding:15px; border-radius:10px; margin:10px 0;">
+        <h4 style="color:#2ecc71; margin-top:0;">{title}</h4>
+        <p style="color:#e0f0e0;">{content}</p>
+    </div>
+    """, unsafe_allow_html=True)
