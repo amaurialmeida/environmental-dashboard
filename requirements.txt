@@ -1,8 +1,10 @@
 streamlit
 plotly
 polars
-duckdb
 pydeck
-scikit-learn
 pandas
+scikit-learn
+duckdb
+geopandas
 folium
+streamlit-option-menu
