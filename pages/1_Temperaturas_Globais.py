@@ -9,21 +9,21 @@ st.markdown("# ?? Temperaturas Globais - EarthMax")
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    futuristic_kpi("Temperatura Média Global", "14.8°C", 1.2)
+    futuristic_kpi("Temperatura MÃ©dia Global", "14.8Â°C", 1.2)
 with col2:
     futuristic_kpi("Ano Mais Quente", "2025", 0.8)
 with col3:
-    futuristic_kpi("Anomalia 2025", "+1.48°C", 12)
+    futuristic_kpi("Anomalia 2025", "+1.48Â°C", 12)
 with col4:
-    futuristic_kpi("Países em Risco", "142", -3)
+    futuristic_kpi("PaÃ­ses em Risco", "142", -3)
 
 st.markdown("---")
 
-tab1, tab2, tab3 = st.tabs(["?? Evolução Histórica", "??? Mapa Interativo", "?? Previsão"])
+tab1, tab2, tab3 = st.tabs(["?? EvoluÃ§Ã£o HistÃ³rica", "??? Mapa Interativo", "?? PrevisÃ£o"])
 
 with tab1:
-    st.subheader("Evolução da Temperatura Global (1850 - 2026)")
-    # Simulação de dados (substitua pelo seu dataset real)
+    st.subheader("EvoluÃ§Ã£o da Temperatura Global (1850 - 2026)")
+    # SimulaÃ§Ã£o de dados (substitua pelo seu dataset real)
     df = pd.DataFrame({
         "Ano": list(range(1850, 2027)),
         "Temperatura": [13.5 + (x-1850)*0.008 + (x>1980)*0.3 for x in range(1850,2027)]
@@ -35,12 +35,12 @@ with tab1:
 
 with tab2:
     st.subheader("Mapa de Calor de Temperaturas")
-    st.info("?? Aqui você pode adicionar PyDeck ou Folium com mapa de temperatura")
+    st.info("?? Aqui vocÃª pode adicionar PyDeck ou Folium com mapa de temperatura")
     # Exemplo PyDeck pode ser adicionado depois
 
 with tab3:
-    st.subheader("Previsão para 2030")
-    st.success("Temperatura projetada: **+2.1°C** acima da média pré-industrial")
+    st.subheader("PrevisÃ£o para 2030")
+    st.success("Temperatura projetada: **+2.1Â°C** acima da mÃ©dia prÃ©-industrial")
     futuristic_card("Impacto", "Aumento de eventos extremos em 47%")
 
 st.caption("Fonte: Reutilizando dados do projeto earth-max-min-temp-history")
