@@ -10,14 +10,19 @@ html_code = """
     <meta charset="utf-8">
     <style>
         body { margin: 0; padding: 0; background: #050505; color: white; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
-        .header { text-align: center; padding: 25px 0 15px 0; border-bottom: 1px solid rgba(46,204,113,0.3); position: relative; }
+        .header { text-align: center; padding: 20px 0 10px 0; border-bottom: 1px solid rgba(46,204,113,0.3); position: relative; }
         .title { 
-            font-size: 4.8rem; 
+            font-size: 3.8rem; 
             background: linear-gradient(90deg, #2ecc71, #3498db);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin: 0; letter-spacing: 6px;
+            margin: 0; letter-spacing: 5px;
         }
-        .subtitle { color: #2ecc71; font-size: 1.75rem; margin: 8px 0 30px 0; }
+        .subtitle { 
+            color: #2ecc71; 
+            font-size: 1.45rem; 
+            margin: 8px 0 25px 0;
+            font-weight: 400;
+        }
         .lang-buttons {
             position: absolute; top: 35px; right: 40px; display: flex; gap: 8px;
         }
@@ -30,7 +35,7 @@ html_code = """
 
         .slide-container {
             display: flex; justify-content: center; align-items: center;
-            min-height: 65vh; transition: opacity 0.8s;
+            min-height: 68vh; transition: opacity 0.8s;
         }
         .kpi-card {
             background: rgba(15, 25, 40, 0.95);
