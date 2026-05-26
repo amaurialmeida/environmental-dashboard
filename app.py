@@ -9,17 +9,35 @@ html_code = """
 <head>
     <meta charset="utf-8">
     <style>
-        body { margin: 0; padding: 0; background: #050505; color: white; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
+        body { 
+            margin: 0; padding: 0; background: #050505; color: white; 
+            font-family: 'Segoe UI', sans-serif; overflow: hidden;
+        }
+        .header {
+            text-align: center; padding: 20px 0 10px 0; border-bottom: 1px solid rgba(46,204,113,0.3);
+        }
         .title { 
-            font-size: 5rem; text-align: center; margin: 30px 0 10px 0;
+            font-size: 4.8rem; 
             background: linear-gradient(90deg, #2ecc71, #3498db);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin: 0; letter-spacing: 6px;
         }
-        .subtitle { text-align: center; color: #2ecc71; font-size: 1.9rem; margin-bottom: 40px; }
-        
+        .subtitle { 
+            color: #2ecc71; font-size: 1.8rem; margin: 5px 0 25px 0;
+        }
+        .lang-buttons {
+            position: absolute; top: 35px; right: 40px; display: flex; gap: 8px;
+        }
+        .lang-btn {
+            padding: 8px 14px; background: rgba(46,204,113,0.15); color: #2ecc71;
+            border: 1px solid #2ecc71; border-radius: 30px; cursor: pointer;
+            font-size: 0.95rem; transition: all 0.3s;
+        }
+        .lang-btn:hover { background: #2ecc71; color: black; }
+
         .slide-container {
             display: flex; justify-content: center; align-items: center;
-            min-height: 70vh; transition: opacity 0.8s;
+            min-height: 65vh; transition: opacity 0.8s;
         }
         .kpi-card {
             background: rgba(15, 25, 40, 0.95);
@@ -46,13 +64,30 @@ html_code = """
             font-size: 1.55rem;
             font-weight: bold;
         }
+        .bottom-bar {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(10,20,35,0.95); padding: 12px 0;
+            border-top: 2px solid #2ecc71; text-align: center;
+            font-size: 1.1rem; color: #2ecc71;
+        }
     </style>
 </head>
 <body>
-    <div class="title">GREENLOG</div>
-    <div class="subtitle">ENVIRONMENTAL INTELLIGENCE 2030</div>
+    <div class="header">
+        <div class="lang-buttons">
+            <div class="lang-btn" onclick="changeLang('pt')">🇧🇷 PT</div>
+            <div class="lang-btn" onclick="changeLang('en')">🇺🇸 EN</div>
+            <div class="lang-btn" onclick="changeLang('es')">🇪🇸 ES</div>
+        </div>
+        <div class="title">GREENLOG</div>
+        <div class="subtitle">Dados para um planeta mais verde!</div>
+    </div>
     
     <div id="slideContainer" class="slide-container"></div>
+
+    <div class="bottom-bar">
+        👇 Clique nos botões acima ou aguarde a transição automática • Projetos do Portfólio
+    </div>
 
     <script>
         const themes = [
@@ -141,7 +176,6 @@ html_code = """
             html += '</div>';
             container.innerHTML = html;
 
-            // Animação de contagem
             setTimeout(() => {
                 theme.kpis.forEach((kpi, i) => {
                     const el = document.getElementById(`num${index}_${i}`);
@@ -156,6 +190,10 @@ html_code = """
             currentSlide = (currentSlide + 1) % themes.length;
             showSlide(currentSlide);
         }, 15000);
+
+        function changeLang(lang) {
+            alert("Idioma alterado para: " + lang.toUpperCase() + " (em breve)");
+        }
     </script>
 </body>
 </html>
