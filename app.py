@@ -1,10 +1,9 @@
 import streamlit as st
-from datetime import datetime, timedelta
 
 st.set_page_config(page_title="Greenlog • Environmental Intelligence", 
                    page_icon="🌱", layout="wide", initial_sidebar_state="collapsed")
 
-# CSS Limpo e Bonito
+# ===================== CSS =====================
 st.markdown("""
 <style>
     .title { 
@@ -14,7 +13,6 @@ st.markdown("""
         -webkit-text-fill-color: transparent; 
         text-align: center; 
         font-weight: bold; 
-        letter-spacing: 6px;
     }
     .subtitle { 
         color: #2ecc71; 
@@ -27,23 +25,23 @@ st.markdown("""
         background: rgba(15, 25, 40, 0.95);
         border: 2px solid #2ecc71;
         border-radius: 22px;
-        padding: 35px 25px;
+        padding: 40px 25px;
         text-align: center;
-        box-shadow: 0 0 35px rgba(46, 204, 113, 0.4);
+        box-shadow: 0 0 35px rgba(46, 204, 113, 0.5);
         height: 100%;
     }
     .kpi-number {
-        font-size: 4rem;
+        font-size: 4.2rem;
         font-weight: bold;
         color: #2ecc71;
         margin: 15px 0;
     }
     .kpi-label {
-        font-size: 1.3rem;
+        font-size: 1.35rem;
         color: #ddd;
     }
     .delta {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: bold;
         margin-top: 15px;
     }
@@ -59,7 +57,6 @@ with col2:
 
 st.markdown("---")
 
-# Dados dos Projetos
 themes = [
     ("🌍 Temperaturas Globais", [
         ("Temperatura Média Global", "14.92°C", "↑ 1.45%"),
@@ -112,27 +109,18 @@ themes = [
     ])
 ]
 
-# Controle de Slide
-if 'slide' not in st.session_state:
-    st.session_state.slide = 0
-if 'last_change' not in st.session_state:
-    st.session_state.last_change = datetime.now()
+# Controle simples de slide
+if 'current_slide' not in st.session_state:
+    st.session_state.current_slide = 0
 
-# Auto-advance
-if (datetime.now() - st.session_state.last_change).total_seconds() > 15:
-    st.session_state.slide = (st.session_state.slide + 1) % len(themes)
-    st.session_state.last_change = datetime.now()
-    st.rerun()
-
-# Exibir Slide Atual
-theme_name, kpis = themes[st.session_state.slide]
+theme_name, kpis = themes[st.session_state.current_slide]
 
 st.markdown(f"<h2 style='text-align:center; color:#2ecc71; margin:30px 0;'>{theme_name}</h2>", unsafe_allow_html=True)
 
 cols = st.columns(len(kpis))
-for i, (label, value, delta) in enumerate(kpis):
+for label, value, delta in kpis:
     color = "#2ecc71" if "↑" in delta else "#e74c3c"
-    with cols[i]:
+    with cols[0]:  # Vamos usar uma coluna por vez para simplificar
         st.markdown(f"""
         <div class="kpi-card">
             <div class="kpi-number">{value}</div>
@@ -140,12 +128,18 @@ for i, (label, value, delta) in enumerate(kpis):
             <div class="delta" style="color:{color};">{delta}</div>
         </div>
         """, unsafe_allow_html=True)
+        break  # Temporariamente mostra só um card grande por vez para testar
 
-st.caption(f"● Slide {st.session_state.slide + 1} de {len(themes)} • Troca automática a cada 15 segundos")
-
-col_btn1, col_btn2, col_btn3 = st.columns([1, 2, 1])
-with col_btn2:
-    if st.button("⏭ Próximo Tema", use_container_width=True):
-        st.session_state.slide = (st.session_state.slide + 1) % len(themes)
-        st.session_state.last_change = datetime.now()
+# Botões de Navegação
+col_prev, col_next = st.columns(2)
+with col_prev:
+    if st.button("← Tema Anterior", use_container_width=True):
+        st.session_state.current_slide = (st.session_state.current_slide - 1) % len(themes)
         st.rerun()
+
+with col_next:
+    if st.button("Próximo Tema →", use_container_width=True):
+        st.session_state.current_slide = (st.session_state.current_slide + 1) % len(themes)
+        st.rerun()
+
+st.caption(f"Slide {st.session_state.current_slide + 1} de {len(themes)}")
