@@ -1,10 +1,10 @@
 import streamlit as st
-import time
+from datetime import datetime
 
 st.set_page_config(page_title="Greenlog • Environmental Intelligence", 
                    page_icon="🌱", layout="wide", initial_sidebar_state="collapsed")
 
-# ===================== CSS MODERNO E ELEGANTE =====================
+# ===================== CSS =====================
 st.markdown("""
 <style>
     .title { 
@@ -29,13 +29,8 @@ st.markdown("""
         border-radius: 20px;
         padding: 30px 20px;
         text-align: center;
-        box-shadow: 0 0 30px rgba(46, 204, 113, 0.35);
+        box-shadow: 0 0 30px rgba(46, 204, 113, 0.4);
         height: 100%;
-        transition: all 0.3s;
-    }
-    .kpi-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 0 40px rgba(46, 204, 113, 0.6);
     }
     .kpi-number {
         font-size: 3.6rem;
@@ -46,12 +41,11 @@ st.markdown("""
     .kpi-label {
         font-size: 1.2rem;
         color: #ddd;
-        min-height: 55px;
     }
     .delta {
         font-size: 1.35rem;
         font-weight: bold;
-        margin-top: 8px;
+        margin-top: 10px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -59,101 +53,99 @@ st.markdown("""
 st.markdown('<h1 class="title">GREENLOG</h1>', unsafe_allow_html=True)
 st.markdown('<p class="subtitle">ENVIRONMENTAL INTELLIGENCE 2030</p>', unsafe_allow_html=True)
 
-# Idioma
 col1, col2 = st.columns([8, 2])
 with col2:
     st.selectbox("🌐 Idioma", ["🇧🇷 Português", "🇺🇸 English", "🇪🇸 Español"], key="lang")
 
 st.markdown("---")
 
-# ===================== DADOS REAIS DOS SEUS PROJETOS =====================
+# ===================== DADOS =====================
 themes = [
-    ("🌍 Temperaturas Globais", [  # Você pode adicionar os números exatos depois
+    ("🌍 Temperaturas Globais", [
         ("Temperatura Média Global", "14.92°C", "↑ 1.45%"),
         ("Ano Mais Quente", "2025", "↑ 0.9%"),
         ("Anomalia Atual", "+1.54°C", "↑ 15%")
     ]),
-    
     ("☀️ Energia Solar", [
-        ("Energia Gerada", "390 MWh", "↑ 1.07 GWh"),
+        ("Energia Gerada", "390 MWh", ""),
         ("CO₂ Evitado", "953 t", ""),
         ("Árvores Equivalentes", "7.250", "")
     ]),
-    
     ("🐝 Colapso das Abelhas", [
         ("Colmeias Perdidas", "338", ""),
         ("Abelhas Perdidas", "~20M", ""),
-        ("Produtores Monitorados", "4", ""),
         ("Colmeias RS (2024)", "6.300+", "")
     ]),
-    
     ("🐝 Abelhas sem Ferrão", [
-        ("Espécies Meliponini", "12+6", ""),
+        ("Espécies Meliponini", "18", ""),
         ("Registros GBIF", "24.500", ""),
         ("Estados Cobertos", "15", ""),
         ("Espécies Ameaçadas", "4 VU", "")
     ]),
-    
     ("🌬️ Potencial Eólico", [
-        ("Velocidade Média", "30.2 km/h", ""),
+        ("Vel. Média", "30.2 km/h", ""),
         ("Fator de Capacidade", ">60%", ""),
         ("Rajada Máxima", "130 km/h", ""),
         ("Potencial Total", "9.500 MW", "")
     ]),
-    
     ("💧 Qualidade da Água", [
-        ("IQA Médio Geral", "81.9", ""),
+        ("IQA Médio", "81.9", ""),
         ("Estações Excelente", "3/18", ""),
-        ("Rios Monitorados", "10", ""),
-        ("Parâmetros Analisados", "4", "")
+        ("Rios Monitorados", "10", "")
     ]),
-    
     ("🌋 Monitoramento Sísmico", [
-        ("Magnitude Registrada", "M7.4", ""),
+        ("Magnitude", "M7.4", ""),
         ("Profundidade", "10 km", ""),
         ("Evacuados", "1.800", ""),
-        ("Réplicas Registradas", "50+", "")
+        ("Réplicas", "50+", "")
     ]),
-    
     ("🌿 Espécies Invasoras", [
         ("Castores Estimados", "110.000+", ""),
-        ("Represas Construídas", "70.600", ""),
         ("Hectares Devastados", "31.000 ha", ""),
-        ("Ano de Introdução", "1946", "")
+        ("Represas Construídas", "70.600", "")
     ]),
-    
     ("🌊 Previsão El Niño 2026", [
-        ("Probabilidade El Niño", "98%", ""),
+        ("Probabilidade", "98%", ""),
         ("Niño 3.4 Atual", "+0.9°C", ""),
         ("Previsão Pico", "+2.4°C", ""),
-        ("Chance Super El Niño", "33%", "")
+        ("Super El Niño", "33%", "")
     ])
 ]
 
-# ===================== CARROSSEL AUTOMÁTICO =====================
-placeholder = st.empty()
-current = 0
+# ===================== CARROSSEL COM CONTROLE =====================
+if 'current_slide' not in st.session_state:
+    st.session_state.current_slide = 0
+if 'last_update' not in st.session_state:
+    st.session_state.last_update = datetime.now()
 
-while True:
-    with placeholder.container():
-        theme_name, kpis = themes[current % len(themes)]
-        
-        st.markdown(f"<h2 style='text-align:center; color:#2ecc71; margin:25px 0;'>{theme_name}</h2>", unsafe_allow_html=True)
-        
-        cols = st.columns(len(kpis))
-        for i, (label, value, delta) in enumerate(kpis):
-            color = "#2ecc71" if "↑" in delta else "#e74c3c"
-            with cols[i]:
-                st.markdown(f"""
-                <div class="kpi-card">
-                    <div class="kpi-number">{value}</div>
-                    <div class="kpi-label">{label}</div>
-                    <div class="delta" style="color:{color};">{delta}</div>
-                </div>
-                """, unsafe_allow_html=True)
-        
-        st.caption(f"● Slide {current % len(themes) + 1} de {len(themes)} • Troca automática a cada 15 segundos")
-    
-    time.sleep(15)
-    current += 1
+# Avança automaticamente a cada 15 segundos
+time_diff = (datetime.now() - st.session_state.last_update).total_seconds()
+if time_diff > 15:
+    st.session_state.current_slide = (st.session_state.current_slide + 1) % len(themes)
+    st.session_state.last_update = datetime.now()
+    st.rerun()
+
+# Mostra o slide atual
+theme_name, kpis = themes[st.session_state.current_slide]
+
+st.markdown(f"<h2 style='text-align:center; color:#2ecc71; margin:30px 0;'>{theme_name}</h2>", unsafe_allow_html=True)
+
+cols = st.columns(len(kpis))
+for i, (label, value, delta) in enumerate(kpis):
+    color = "#2ecc71" if "↑" in delta else "#e74c3c"
+    with cols[i]:
+        st.markdown(f"""
+        <div class="kpi-card">
+            <div class="kpi-number">{value}</div>
+            <div class="kpi-label">{label}</div>
+            <div class="delta" style="color:{color};">{delta}</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+st.caption(f"● Slide {st.session_state.current_slide + 1} de {len(themes)} • Troca automática a cada 15 segundos")
+
+# Botão manual (opcional)
+if st.button("⏭ Próximo Slide"):
+    st.session_state.current_slide = (st.session_state.current_slide + 1) % len(themes)
+    st.session_state.last_update = datetime.now()
     st.rerun()
