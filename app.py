@@ -15,10 +15,10 @@ html_code = """
         }
         .header { 
             text-align: center; 
-            padding: 20px 0 15px 0; 
+            padding: 20px 0 10px 0; 
         }
         .main-title { 
-            font-size: 2.65rem; 
+            font-size: 2.7rem; 
             color: #2ecc71;
             margin: 8px 0 12px 0;
             font-weight: 500;
@@ -26,21 +26,21 @@ html_code = """
         .lang-buttons {
             display: flex; 
             justify-content: center; 
-            gap: 12px;
-            margin-bottom: 25px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
         .lang-btn {
-            padding: 8px 18px; 
+            padding: 7px 16px; 
             background: rgba(46,204,113,0.12); 
             color: #2ecc71;
             border: 1px solid #2ecc71; 
             border-radius: 30px; 
             cursor: pointer;
-            font-size: 0.92rem; 
+            font-size: 0.9rem; 
             transition: all 0.3s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
         }
         .lang-btn:hover, .lang-btn.active { 
             background: #2ecc71; 
@@ -52,17 +52,17 @@ html_code = """
             justify-content: center; 
             align-items: center;
             min-height: 65vh; 
-            padding-top: 5px;
+            padding-top: 10px;
         }
         .kpi-card {
             background: rgba(15, 25, 40, 0.95);
             border: 2px solid #2ecc71;
             border-radius: 20px;
-            padding: 38px 28px;
-            width: 350px;
+            padding: 35px 25px;
+            width: 340px;
             text-align: center;
-            box-shadow: 0 0 40px rgba(46, 204, 113, 0.4);
-            margin: 10px;
+            box-shadow: 0 0 35px rgba(46, 204, 113, 0.4);
+            margin: 8px;
         }
         .kpi-number { 
             font-size: 3.9rem; 
@@ -71,7 +71,7 @@ html_code = """
             margin: 10px 0; 
         }
         .kpi-label { 
-            font-size: 1.22rem; 
+            font-size: 1.2rem; 
             color: #ddd; 
             margin-bottom: 8px; 
         }
@@ -211,7 +211,7 @@ html_code = """
             const lang = currentLang;
             
             let html = `<h2 style="text-align:center; color:#2ecc71; margin-bottom:25px;">${theme.name[lang]}</h2>`;
-            html += '<div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">';
+            html += '<div style="display:flex; gap:18px; justify-content:center; flex-wrap:wrap;">';
             
             theme.kpis.forEach((kpi, i) => {
                 html += `
