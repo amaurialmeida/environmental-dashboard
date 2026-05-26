@@ -21,22 +21,39 @@ html_code = """
         .main-title { 
             font-size: 2.8rem; 
             color: #2ecc71;
-            margin: 10px 0 8px 0;
+            margin: 10px 0 12px 0;
             font-weight: 500;
         }
         .lang-buttons {
-            position: absolute; top: 30px; right: 40px; display: flex; gap: 8px;
+            display: flex; 
+            justify-content: center; 
+            gap: 12px;
+            margin-bottom: 25px;
         }
         .lang-btn {
-            padding: 7px 14px; background: rgba(46,204,113,0.15); color: #2ecc71;
-            border: 1px solid #2ecc71; border-radius: 30px; cursor: pointer;
-            font-size: 0.92rem; transition: all 0.3s;
+            padding: 8px 18px; 
+            background: rgba(46,204,113,0.12); 
+            color: #2ecc71;
+            border: 1px solid #2ecc71; 
+            border-radius: 30px; 
+            cursor: pointer;
+            font-size: 0.95rem; 
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .lang-btn:hover, .lang-btn.active { background: #2ecc71; color: black; }
+        .lang-btn:hover, .lang-btn.active { 
+            background: #2ecc71; 
+            color: black; 
+        }
 
         .slide-container {
-            display: flex; justify-content: center; align-items: center;
-            min-height: 72vh; transition: opacity 0.8s;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            min-height: 68vh; 
+            transition: opacity 0.8s;
             padding-top: 10px;
         }
         .kpi-card {
@@ -63,12 +80,19 @@ html_code = """
 </head>
 <body>
     <div class="header">
-        <div class="lang-buttons">
-            <div class="lang-btn active" id="btn-pt" onclick="setLanguage('pt')">🇧🇷 PT</div>
-            <div class="lang-btn" id="btn-en" onclick="setLanguage('en')">🇺🇸 EN</div>
-            <div class="lang-btn" id="btn-es" onclick="setLanguage('es')">🇪🇸 ES</div>
-        </div>
         <div class="main-title" id="main-title">Dados para um planeta mais verde!</div>
+        
+        <div class="lang-buttons">
+            <div class="lang-btn active" id="btn-pt" onclick="setLanguage('pt')">
+                🇧🇷 Português
+            </div>
+            <div class="lang-btn" id="btn-en" onclick="setLanguage('en')">
+                🇬🇧 English
+            </div>
+            <div class="lang-btn" id="btn-es" onclick="setLanguage('es')">
+                🇪🇸 Español
+            </div>
+        </div>
     </div>
     
     <div id="slideContainer" class="slide-container"></div>
