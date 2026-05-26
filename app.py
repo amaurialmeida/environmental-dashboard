@@ -1,88 +1,139 @@
 import streamlit as st
-from datetime import datetime
 
 st.set_page_config(page_title="Greenlog • Environmental Intelligence", 
                    page_icon="🌱", layout="wide", initial_sidebar_state="collapsed")
 
-st.markdown("""
-<style>
-    .title { font-size: 5rem; background: linear-gradient(90deg, #2ecc71, #3498db); 
-             -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-             text-align: center; font-weight: bold; letter-spacing: 5px; }
-    .subtitle { color: #2ecc71; text-align: center; font-size: 1.9rem; margin-top: -25px; margin-bottom: 40px; }
-    .kpi-card {
-        background: rgba(15, 25, 40, 0.95);
-        border: 2px solid #2ecc71;
-        border-radius: 20px;
-        padding: 40px 25px;
-        text-align: center;
-        box-shadow: 0 0 35px rgba(46, 204, 113, 0.5);
-        height: 100%;
-    }
-    .kpi-number { font-size: 4rem; font-weight: bold; color: #2ecc71; margin: 15px 0; }
-    .kpi-label { font-size: 1.35rem; color: #ddd; }
-    .delta { font-size: 1.55rem; font-weight: bold; margin-top: 15px; }
-</style>
-""", unsafe_allow_html=True)
+# ===================== HTML + CSS + JAVASCRIPT CUSTOMIZADO =====================
+html_code = """
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { 
+            margin: 0; padding: 0; background: #050505; color: white; 
+            font-family: 'Segoe UI', sans-serif; overflow: hidden;
+        }
+        .title { 
+            font-size: 4.8rem; text-align: center; margin: 30px 0 10px 0;
+            background: linear-gradient(90deg, #2ecc71, #3498db);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .subtitle { text-align: center; color: #2ecc71; font-size: 1.8rem; margin-bottom: 40px; }
+        
+        .slide-container {
+            display: flex; justify-content: center; align-items: center;
+            min-height: 70vh; transition: opacity 0.8s;
+        }
+        .kpi-card {
+            background: rgba(15, 25, 40, 0.95);
+            border: 2px solid #2ecc71;
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 380px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(46, 204, 113, 0.4);
+        }
+        .kpi-number {
+            font-size: 4.2rem;
+            font-weight: bold;
+            color: #2ecc71;
+            margin: 15px 0;
+        }
+        .kpi-label {
+            font-size: 1.3rem;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+        .delta {
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">GREENLOG</div>
+    <div class="subtitle">ENVIRONMENTAL INTELLIGENCE 2030</div>
+    
+    <div id="slideContainer" class="slide-container">
+        <!-- Slides serão inseridos via JS -->
+    </div>
 
-st.markdown('<h1 class="title">GREENLOG</h1>', unsafe_allow_html=True)
-st.markdown('<p class="subtitle">ENVIRONMENTAL INTELLIGENCE 2030</p>', unsafe_allow_html=True)
+    <script>
+        const themes = [
+            {name: "🌍 Temperaturas Globais", kpis: [
+                {label: "Temperatura Média Global", value: 14.92, unit: "°C", delta: "↑ 1.45%"},
+                {label: "Ano Mais Quente", value: 2025, unit: "", delta: "↑ 0.9%"},
+                {label: "Anomalia Atual", value: 1.54, unit: "°C", delta: "↑ 15%"}
+            ]},
+            {name: "☀️ Energia Solar", kpis: [
+                {label: "Energia Gerada", value: 390, unit: "MWh", delta: ""},
+                {label: "CO₂ Evitado", value: 953, unit: "t", delta: ""},
+                {label: "Árvores Equivalentes", value: 7250, unit: "", delta: ""}
+            ]},
+            {name: "🐝 Colapso das Abelhas", kpis: [
+                {label: "Colmeias Perdidas", value: 338, unit: "", delta: ""},
+                {label: "Abelhas Perdidas", value: 20000000, unit: "", delta: ""},
+                {label: "Colmeias RS (2024)", value: 6300, unit: "", delta: ""}
+            ]},
+            // Adicione os outros temas aqui...
+        ];
 
-col1, col2 = st.columns([8, 2])
-with col2:
-    st.selectbox("🌐 Idioma", ["🇧🇷 Português", "🇺🇸 English", "🇪🇸 Español"])
+        let currentSlide = 0;
 
-st.markdown("---")
+        function animateCount(element, end, duration = 1800) {
+            let start = 0;
+            const startTime = Date.now();
+            function update() {
+                const now = Date.now();
+                const progress = Math.min((now - startTime) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value.toLocaleString('pt-BR');
+                if (progress < 1) requestAnimationFrame(update);
+                else element.textContent = end.toLocaleString('pt-BR');
+            }
+            update();
+        }
 
-themes = [
-    ("🌍 Temperaturas Globais", [("Temperatura Média Global", "14.92°C", "↑ 1.45%"), ("Ano Mais Quente", "2025", "↑ 0.9%"), ("Anomalia Atual", "+1.54°C", "↑ 15%")]),
-    ("☀️ Energia Solar", [("Energia Gerada", "390 MWh", ""), ("CO₂ Evitado", "953 t", ""), ("Árvores Equivalentes", "7.250", "")]),
-    ("🐝 Colapso das Abelhas", [("Colmeias Perdidas", "338", ""), ("Abelhas Perdidas", "~20M", ""), ("Colmeias RS (2024)", "6.300+", "")]),
-    ("🐝 Abelhas sem Ferrão", [("Espécies Monitoradas", "18", ""), ("Registros GBIF", "24.500", ""), ("Estados Cobertos", "15", ""), ("Espécies Ameaçadas", "4 VU", "")]),
-    ("🌬️ Potencial Eólico", [("Vel. Média", "30.2 km/h", ""), ("Fator de Capacidade", ">60%", ""), ("Rajada Máxima", "130 km/h", ""), ("Potencial Total", "9.500 MW", "")]),
-    ("💧 Qualidade da Água", [("IQA Médio", "81.9", ""), ("Estações Excelente", "3/18", ""), ("Rios Monitorados", "10", "")]),
-    ("🌋 Monitoramento Sísmico", [("Magnitude", "M7.4", ""), ("Profundidade", "10 km", ""), ("Evacuados", "1.800", ""), ("Réplicas", "50+", "")]),
-    ("🌿 Espécies Invasoras", [("Castores Estimados", "110.000+", ""), ("Hectares Devastados", "31.000 ha", ""), ("Represas Construídas", "70.600", "")]),
-    ("🌊 El Niño 2026", [("Probabilidade", "98%", ""), ("Niño 3.4 Atual", "+0.9°C", ""), ("Previsão Pico", "+2.4°C", ""), ("Super El Niño", "33%", "")])
-]
+        function showSlide(index) {
+            const container = document.getElementById('slideContainer');
+            const theme = themes[index];
+            
+            let html = `<h2 style="text-align:center; color:#2ecc71; margin-bottom:40px;">${theme.name}</h2>`;
+            html += '<div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">';
+            
+            theme.kpis.forEach((kpi, i) => {
+                html += `
+                <div class="kpi-card">
+                    <div class="kpi-number" id="num${index}_${i}">0</div>
+                    <div class="kpi-label">${kpi.label} ${kpi.unit}</div>
+                    <div class="delta" style="color:#2ecc71;">${kpi.delta}</div>
+                </div>`;
+            });
+            html += '</div>';
+            container.innerHTML = html;
 
-if 'current_slide' not in st.session_state:
-    st.session_state.current_slide = 0
-if 'last_update' not in st.session_state:
-    st.session_state.last_update = datetime.now()
+            // Animação de contagem
+            setTimeout(() => {
+                theme.kpis.forEach((kpi, i) => {
+                    const el = document.getElementById(`num${index}_${i}`);
+                    if (el) animateCount(el, kpi.value);
+                });
+            }, 300);
+        }
 
-# Tentativa de Auto-advance
-if (datetime.now() - st.session_state.last_update).total_seconds() > 15:
-    st.session_state.current_slide = (st.session_state.current_slide + 1) % len(themes)
-    st.session_state.last_update = datetime.now()
+        // Troca automática
+        function autoAdvance() {
+            currentSlide = (currentSlide + 1) % themes.length;
+            showSlide(currentSlide);
+        }
 
-theme_name, kpis = themes[st.session_state.current_slide]
+        // Inicia
+        showSlide(0);
+        setInterval(autoAdvance, 15000);
+    </script>
+</body>
+</html>
+"""
 
-st.markdown(f"<h2 style='text-align:center; color:#2ecc71; margin:30px 0;'>{theme_name}</h2>", unsafe_allow_html=True)
-
-cols = st.columns(len(kpis))
-for i, (label, value, delta) in enumerate(kpis):
-    color = "#2ecc71" if "↑" in delta else "#e74c3c"
-    with cols[i]:
-        st.markdown(f"""
-        <div class="kpi-card">
-            <div class="kpi-number">{value}</div>
-            <div class="kpi-label">{label}</div>
-            <div class="delta" style="color:{color};">{delta}</div>
-        </div>
-        """, unsafe_allow_html=True)
-
-st.caption(f"Slide {st.session_state.current_slide + 1} de {len(themes)} • Auto em 15 segundos (se não funcionar, use os botões)")
-
-col_prev, col_next = st.columns(2)
-with col_prev:
-    if st.button("← Tema Anterior", use_container_width=True):
-        st.session_state.current_slide = (st.session_state.current_slide - 1) % len(themes)
-        st.session_state.last_update = datetime.now()
-        st.rerun()
-
-with col_next:
-    if st.button("Próximo Tema →", use_container_width=True):
-        st.session_state.current_slide = (st.session_state.current_slide + 1) % len(themes)
-        st.session_state.last_update = datetime.now()
-        st.rerun()
+st.components.v1.html(html_code, height=800, scrolling=True)
