@@ -111,3 +111,99 @@ html_code = """
              kpis: [
                 {label:{pt:"Velocidade Média",en:"Average Speed",es:"Velocidad Media"}, value:30.2, unit:"km/h", delta:""},
                 {label:{pt:"Fator de Capacidade",en:"Capacity Factor",es:"Factor de Capacidad"}, value:60, unit:"%", delta:""},
+                {label:{pt:"Rajada Máxima",en:"Max Gust",es:"Ráfaga Máxima"}, value:130, unit:"km/h", delta:""},
+                {label:{pt:"Potencial Total",en:"Total Potential",es:"Potencial Total"}, value:9500, unit:"MW", delta:""}
+            ]},
+            {name: {pt:"💧 Qualidade da Água", en:"💧 Water Quality", es:"💧 Calidad del Agua"}, 
+             kpis: [
+                {label:{pt:"IQA Médio",en:"Average IQA",es:"IQA Medio"}, value:81.9, unit:"", delta:""},
+                {label:{pt:"Estações Excelente",en:"Excellent Stations",es:"Estaciones Excelentes"}, value:3, unit:"/18", delta:""},
+                {label:{pt:"Rios Monitorados",en:"Monitored Rivers",es:"Ríos Monitoreados"}, value:10, unit:"", delta:""}
+            ]},
+            {name: {pt:"🌋 Monitoramento Sísmico", en:"🌋 Seismic Monitoring", es:"🌋 Monitoreo Sísmico"}, 
+             kpis: [
+                {label:{pt:"Magnitude",en:"Magnitude",es:"Magnitud"}, value:7.4, unit:"", delta:""},
+                {label:{pt:"Profundidade",en:"Depth",es:"Profundidad"}, value:10, unit:"km", delta:""},
+                {label:{pt:"Evacuados",en:"Evacuated",es:"Evacuados"}, value:1800, unit:"", delta:""},
+                {label:{pt:"Réplicas",en:"Aftershocks",es:"Réplicas"}, value:50, unit:"+", delta:""}
+            ]},
+            {name: {pt:"🌿 Espécies Invasoras", en:"🌿 Invasive Species", es:"🌿 Especies Invasoras"}, 
+             kpis: [
+                {label:{pt:"Castores Estimados",en:"Estimated Beavers",es:"Castores Estimados"}, value:110000, unit:"+", delta:""},
+                {label:{pt:"Hectares Devastados",en:"Devastated Hectares",es:"Hectáreas Devastadas"}, value:31000, unit:"ha", delta:""},
+                {label:{pt:"Represas Construídas",en:"Dams Built",es:"Represas Construidas"}, value:70600, unit:"", delta:""}
+            ]},
+            {name: {pt:"🌊 El Niño 2026", en:"🌊 El Niño 2026", es:"🌊 El Niño 2026"}, 
+             kpis: [
+                {label:{pt:"Probabilidade",en:"Probability",es:"Probabilidad"}, value:98, unit:"%", delta:""},
+                {label:{pt:"Niño 3.4 Atual",en:"Current Niño 3.4",es:"Niño 3.4 Actual"}, value:0.9, unit:"°C", delta:""},
+                {label:{pt:"Previsão Pico",en:"Peak Forecast",es:"Previsión Pico"}, value:2.4, unit:"°C", delta:""},
+                {label:{pt:"Super El Niño",en:"Super El Niño",es:"Super El Niño"}, value:33, unit:"%", delta:""}
+            ]}
+        ];
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('main-title').textContent = translations[lang].title;
+            document.getElementById('main-subtitle').textContent = translations[lang].subtitle;
+            document.getElementById('bottom-text').textContent = translations[lang].bottom;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            showSlide(currentSlide);
+        }
+
+        function animateCount(element, end, duration = 2000) {
+            let start = 0;
+            const startTime = Date.now();
+            function update() {
+                const now = Date.now();
+                const progress = Math.min((now - startTime) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value.toLocaleString('pt-BR');
+                if (progress < 1) requestAnimationFrame(update);
+                else element.textContent = end.toLocaleString('pt-BR');
+            }
+            update();
+        }
+
+        function showSlide(index) {
+            const container = document.getElementById('slideContainer');
+            const theme = themes[index];
+            const lang = currentLang;
+            
+            let html = `<h2 style="text-align:center; color:#2ecc71; margin-bottom:40px;">${theme.name[lang]}</h2>`;
+            html += '<div style="display:flex; gap:25px; justify-content:center; flex-wrap:wrap;">';
+            
+            theme.kpis.forEach((kpi, i) => {
+                html += `
+                <div class="kpi-card">
+                    <div class="kpi-number" id="num${index}_${i}">0</div>
+                    <div class="kpi-label">${kpi.label[lang]} ${kpi.unit}</div>
+                    <div class="delta" style="color:#2ecc71;">${kpi.delta}</div>
+                </div>`;
+            });
+            html += '</div>';
+            container.innerHTML = html;
+
+            setTimeout(() => {
+                theme.kpis.forEach((kpi, i) => {
+                    const el = document.getElementById(`num${index}_${i}`);
+                    if (el) animateCount(el, kpi.value);
+                });
+            }, 400);
+        }
+
+        // Inicialização
+        showSlide(0);
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % themes.length;
+            showSlide(currentSlide);
+        }, 15000);
+    </script>
+</body>
+</html>
+"""
+
+st.components.v1.html(html_code, height=850, scrolling=True)
