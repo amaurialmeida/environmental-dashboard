@@ -10,14 +10,14 @@ html_code = """
     <meta charset="utf-8">
     <style>
         body { margin: 0; padding: 0; background: #050505; color: white; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
-        .header { text-align: center; padding: 20px 0 10px 0; border-bottom: 1px solid rgba(46,204,113,0.3); position: relative; }
+        .header { text-align: center; padding: 25px 0 15px 0; border-bottom: 1px solid rgba(46,204,113,0.3); position: relative; }
         .title { 
             font-size: 4.8rem; 
             background: linear-gradient(90deg, #2ecc71, #3498db);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             margin: 0; letter-spacing: 6px;
         }
-        .subtitle { color: #2ecc71; font-size: 1.75rem; margin: 5px 0 25px 0; }
+        .subtitle { color: #2ecc71; font-size: 1.75rem; margin: 8px 0 30px 0; }
         .lang-buttons {
             position: absolute; top: 35px; right: 40px; display: flex; gap: 8px;
         }
@@ -40,7 +40,7 @@ html_code = """
             width: 360px;
             text-align: center;
             box-shadow: 0 0 40px rgba(46, 204, 113, 0.4);
-            margin: 10px;
+            margin: 12px;
         }
         .kpi-number { font-size: 4.1rem; font-weight: bold; color: #2ecc71; margin: 15px 0; }
         .kpi-label { font-size: 1.3rem; color: #ddd; margin-bottom: 10px; }
@@ -48,7 +48,7 @@ html_code = """
 
         .bottom-bar {
             position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(10,20,35,0.95); padding: 12px 0;
+            background: rgba(10,20,35,0.95); padding: 14px 0;
             border-top: 2px solid #2ecc71; text-align: center;
             font-size: 0.95rem; color: #aaa;
         }
@@ -76,73 +76,38 @@ html_code = """
         let currentSlide = 0;
 
         const translations = {
-            pt: {
-                title: "GREENLOG",
-                subtitle: "Dados para um planeta mais verde!",
-                bottom: "👇 Clique nos botões acima ou aguarde a transição automática"
-            },
-            en: {
-                title: "GREENLOG",
-                subtitle: "Data for a greener planet!",
-                bottom: "👇 Click above or wait for automatic transition"
-            },
-            es: {
-                title: "GREENLOG",
-                subtitle: "¡Datos para un planeta más verde!",
-                bottom: "👇 Haz clic arriba o espera la transición automática"
-            }
+            pt: { title: "GREENLOG", subtitle: "Dados para um planeta mais verde!", bottom: "👇 Clique nos botões acima ou aguarde a transição automática" },
+            en: { title: "GREENLOG", subtitle: "Data for a greener planet!", bottom: "👇 Click above or wait for automatic transition" },
+            es: { title: "GREENLOG", subtitle: "¡Datos para un planeta más verde!", bottom: "👇 Haz clic arriba o espera la transición automática" }
         };
 
-        const themes = [ /* ... mesmos temas de antes ... */ 
+        const themes = [
             {name: {pt:"🌍 Temperaturas Globais", en:"🌍 Global Temperatures", es:"🌍 Temperaturas Globales"}, 
-             kpis: [{label:{pt:"Temperatura Média Global",en:"Global Average Temperature",es:"Temperatura Media Global"}, value:14.92, unit:"°C", delta:"↑ 1.45%"}, ... ]},
-            // (Vou manter resumido por tamanho, mas todos estão incluídos no código completo)
-        ];
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.getElementById('main-title').textContent = translations[lang].title;
-            document.getElementById('main-subtitle').textContent = translations[lang].subtitle;
-            document.getElementById('bottom-text').textContent = translations[lang].bottom;
-            
-            // Atualiza botões ativos
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn-' + lang).classList.add('active');
-            
-            // Atualiza slide atual com novo idioma
-            showSlide(currentSlide);
-        }
-
-        function animateCount(element, end, duration = 2000) {
-            let start = 0;
-            const startTime = Date.now();
-            function update() {
-                const now = Date.now();
-                const progress = Math.min((now - startTime) / duration, 1);
-                const value = Math.floor(progress * (end - start) + start);
-                element.textContent = value.toLocaleString('pt-BR');
-                if (progress < 1) requestAnimationFrame(update);
-                else element.textContent = end.toLocaleString('pt-BR');
-            }
-            update();
-        }
-
-        function showSlide(index) {
-            // Código completo de exibição dos cards (mantido igual)
-            const container = document.getElementById('slideContainer');
-            // ... (mesma lógica anterior)
-            // Para não ficar muito longo, mantive a estrutura anterior
-        }
-
-        // Inicialização
-        showSlide(0);
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % 9;
-            showSlide(currentSlide);
-        }, 15000);
-    </script>
-</body>
-</html>
-"""
-
-st.components.v1.html(html_code, height=850, scrolling=True)
+             kpis: [
+                {label:{pt:"Temperatura Média Global",en:"Global Average Temperature",es:"Temperatura Media Global"}, value:14.92, unit:"°C", delta:"↑ 1.45%"},
+                {label:{pt:"Ano Mais Quente",en:"Hottest Year",es:"Año Más Caliente"}, value:2025, unit:"", delta:"↑ 0.9%"},
+                {label:{pt:"Anomalia Atual",en:"Current Anomaly",es:"Anomalía Actual"}, value:1.54, unit:"°C", delta:"↑ 15%"}
+            ]},
+            {name: {pt:"☀️ Energia Solar", en:"☀️ Solar Energy", es:"☀️ Energía Solar"}, 
+             kpis: [
+                {label:{pt:"Energia Gerada",en:"Energy Generated",es:"Energía Generada"}, value:390, unit:"MWh", delta:""},
+                {label:{pt:"CO₂ Evitado",en:"CO₂ Avoided",es:"CO₂ Evitado"}, value:953, unit:"t", delta:""},
+                {label:{pt:"Árvores Equivalentes",en:"Equivalent Trees",es:"Árboles Equivalentes"}, value:7250, unit:"", delta:""}
+            ]},
+            {name: {pt:"🐝 Colapso das Abelhas", en:"🐝 Bee Collapse", es:"🐝 Colapso de Abejas"}, 
+             kpis: [
+                {label:{pt:"Colmeias Perdidas",en:"Lost Hives",es:"Colmenas Perdidas"}, value:338, unit:"", delta:""},
+                {label:{pt:"Abelhas Perdidas",en:"Bees Lost",es:"Abejas Perdidas"}, value:20000000, unit:"", delta:""},
+                {label:{pt:"Colmeias RS (2024)",en:"RS Hives (2024)",es:"Colmenas RS (2024)"}, value:6300, unit:"", delta:""}
+            ]},
+            {name: {pt:"🐝 Abelhas sem Ferrão", en:"🐝 Stingless Bees", es:"🐝 Abejas sin Aguijón"}, 
+             kpis: [
+                {label:{pt:"Espécies Monitoradas",en:"Monitored Species",es:"Especies Monitoreadas"}, value:18, unit:"", delta:""},
+                {label:{pt:"Registros GBIF",en:"GBIF Records",es:"Registros GBIF"}, value:24500, unit:"", delta:""},
+                {label:{pt:"Estados Cobertos",en:"Covered States",es:"Estados Cubiertos"}, value:15, unit:"", delta:""},
+                {label:{pt:"Espécies Ameaçadas",en:"Threatened Species",es:"Especies Amenazadas"}, value:4, unit:"VU", delta:""}
+            ]},
+            {name: {pt:"🌬️ Potencial Eólico", en:"🌬️ Wind Potential", es:"🌬️ Potencial Eólico"}, 
+             kpis: [
+                {label:{pt:"Velocidade Média",en:"Average Speed",es:"Velocidad Media"}, value:30.2, unit:"km/h", delta:""},
+                {label:{pt:"Fator de Capacidade",en:"Capacity Factor",es:"Factor de Capacidad"}, value:60, unit:"%", delta:""},
