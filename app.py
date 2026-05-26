@@ -14,14 +14,14 @@ st.markdown("""
         background: rgba(15, 25, 40, 0.95);
         border: 2px solid #2ecc71;
         border-radius: 20px;
-        padding: 35px 20px;
+        padding: 40px 25px;
         text-align: center;
-        box-shadow: 0 0 30px rgba(46, 204, 113, 0.5);
+        box-shadow: 0 0 35px rgba(46, 204, 113, 0.5);
         height: 100%;
     }
-    .kpi-number { font-size: 3.8rem; font-weight: bold; color: #2ecc71; margin: 12px 0; }
-    .kpi-label { font-size: 1.25rem; color: #ddd; }
-    .delta { font-size: 1.45rem; font-weight: bold; margin-top: 12px; }
+    .kpi-number { font-size: 4rem; font-weight: bold; color: #2ecc71; margin: 15px 0; }
+    .kpi-label { font-size: 1.35rem; color: #ddd; }
+    .delta { font-size: 1.55rem; font-weight: bold; margin-top: 15px; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -51,11 +51,10 @@ if 'current_slide' not in st.session_state:
 if 'last_update' not in st.session_state:
     st.session_state.last_update = datetime.now()
 
-# Auto-advance
+# Tentativa de Auto-advance
 if (datetime.now() - st.session_state.last_update).total_seconds() > 15:
     st.session_state.current_slide = (st.session_state.current_slide + 1) % len(themes)
     st.session_state.last_update = datetime.now()
-    st.rerun()
 
 theme_name, kpis = themes[st.session_state.current_slide]
 
@@ -73,7 +72,7 @@ for i, (label, value, delta) in enumerate(kpis):
         </div>
         """, unsafe_allow_html=True)
 
-st.caption(f"Slide {st.session_state.current_slide + 1} de {len(themes)} • Auto em 15 segundos")
+st.caption(f"Slide {st.session_state.current_slide + 1} de {len(themes)} • Auto em 15 segundos (se não funcionar, use os botões)")
 
 col_prev, col_next = st.columns(2)
 with col_prev:
