@@ -1,13 +1,14 @@
 import streamlit as st
+from datetime import datetime, timedelta
 
 st.set_page_config(page_title="Greenlog • Environmental Intelligence", 
                    page_icon="🌱", layout="wide", initial_sidebar_state="collapsed")
 
-# ===================== CSS + JAVASCRIPT (Count-up + Auto Carousel) =====================
+# CSS Limpo e Bonito
 st.markdown("""
 <style>
     .title { 
-        font-size: 5rem; 
+        font-size: 5.2rem; 
         background: linear-gradient(90deg, #2ecc71, #3498db); 
         -webkit-background-clip: text; 
         -webkit-text-fill-color: transparent; 
@@ -18,66 +19,35 @@ st.markdown("""
     .subtitle { 
         color: #2ecc71; 
         text-align: center; 
-        font-size: 1.9rem; 
-        margin-top: -25px;
+        font-size: 2rem; 
+        margin-top: -30px;
         margin-bottom: 40px;
     }
     .kpi-card {
         background: rgba(15, 25, 40, 0.95);
         border: 2px solid #2ecc71;
-        border-radius: 20px;
-        padding: 35px 20px;
+        border-radius: 22px;
+        padding: 35px 25px;
         text-align: center;
-        box-shadow: 0 0 30px rgba(46, 204, 113, 0.4);
+        box-shadow: 0 0 35px rgba(46, 204, 113, 0.4);
         height: 100%;
     }
     .kpi-number {
-        font-size: 3.8rem;
+        font-size: 4rem;
         font-weight: bold;
         color: #2ecc71;
-        margin: 12px 0;
+        margin: 15px 0;
     }
     .kpi-label {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
         color: #ddd;
     }
     .delta {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         font-weight: bold;
-        margin-top: 12px;
+        margin-top: 15px;
     }
 </style>
-
-<script>
-let currentSlide = 0;
-const totalSlides = 9;
-
-function animateCount(id, start, end, duration) {
-    let startTime = null;
-    function step(timestamp) {
-        if (!startTime) startTime = timestamp;
-        let progress = Math.min((timestamp - startTime) / duration, 1);
-        let value = Math.floor(progress * (end - start) + start);
-        document.getElementById(id).innerHTML = value.toLocaleString('pt-BR');
-        if (progress < 1) requestAnimationFrame(step);
-        else document.getElementById(id).innerHTML = end.toLocaleString('pt-BR');
-    }
-    requestAnimationFrame(step);
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    document.getElementById('carousel').style.opacity = '0';
-    setTimeout(() => {
-        window.location.reload();
-    }, 600);
-}
-
-// Inicia o timer automático
-setTimeout(() => {
-    nextSlide();
-}, 15000);
-</script>
 """, unsafe_allow_html=True)
 
 st.markdown('<h1 class="title">GREENLOG</h1>', unsafe_allow_html=True)
@@ -89,86 +59,93 @@ with col2:
 
 st.markdown("---")
 
-# Dados
+# Dados dos Projetos
 themes = [
     ("🌍 Temperaturas Globais", [
-        ("Temperatura Média Global", 14.92, "°C", "↑ 1.45%"),
-        ("Ano Mais Quente", 2025, "", "↑ 0.9%"),
-        ("Anomalia Atual", 1.54, "°C", "↑ 15%")
+        ("Temperatura Média Global", "14.92°C", "↑ 1.45%"),
+        ("Ano Mais Quente", "2025", "↑ 0.9%"),
+        ("Anomalia Atual", "+1.54°C", "↑ 15%")
     ]),
     ("☀️ Energia Solar", [
-        ("Energia Gerada", 390, "MWh", ""),
-        ("CO₂ Evitado", 953, "t", ""),
-        ("Árvores Equivalentes", 7250, "", "")
+        ("Energia Gerada", "390 MWh", ""),
+        ("CO₂ Evitado", "953 t", ""),
+        ("Árvores Equivalentes", "7.250", "")
     ]),
     ("🐝 Colapso das Abelhas", [
-        ("Colmeias Perdidas", 338, "", ""),
-        ("Abelhas Perdidas", 20000000, "", ""),
-        ("Colmeias RS", 6300, "", "")
+        ("Colmeias Perdidas", "338", ""),
+        ("Abelhas Perdidas", "~20M", ""),
+        ("Colmeias RS (2024)", "6.300+", "")
     ]),
     ("🐝 Abelhas sem Ferrão", [
-        ("Espécies Monitoradas", 18, "", ""),
-        ("Registros GBIF", 24500, "", ""),
-        ("Estados Cobertos", 15, "", ""),
-        ("Espécies Ameaçadas", 4, "VU", "")
+        ("Espécies Monitoradas", "18", ""),
+        ("Registros GBIF", "24.500", ""),
+        ("Estados Cobertos", "15", ""),
+        ("Espécies Ameaçadas", "4 VU", "")
     ]),
     ("🌬️ Potencial Eólico", [
-        ("Vel. Média", 30.2, "km/h", ""),
-        ("Fator Capacidade", 60, "%", ""),
-        ("Rajada Máx.", 130, "km/h", ""),
-        ("Potencial", 9500, "MW", "")
+        ("Vel. Média", "30.2 km/h", ""),
+        ("Fator de Capacidade", ">60%", ""),
+        ("Rajada Máxima", "130 km/h", ""),
+        ("Potencial Total", "9.500 MW", "")
     ]),
     ("💧 Qualidade da Água", [
-        ("IQA Médio", 81.9, "", ""),
-        ("Estações Excelente", 3, "/18", ""),
-        ("Rios Monitorados", 10, "", "")
+        ("IQA Médio", "81.9", ""),
+        ("Estações Excelente", "3/18", ""),
+        ("Rios Monitorados", "10", "")
     ]),
     ("🌋 Monitoramento Sísmico", [
-        ("Magnitude", 7.4, "", ""),
-        ("Profundidade", 10, "km", ""),
-        ("Evacuados", 1800, "", ""),
-        ("Réplicas", 50, "+", "")
+        ("Magnitude", "M7.4", ""),
+        ("Profundidade", "10 km", ""),
+        ("Evacuados", "1.800", ""),
+        ("Réplicas", "50+", "")
     ]),
     ("🌿 Espécies Invasoras", [
-        ("Castores", 110000, "+", ""),
-        ("Hectares Devastados", 31000, "ha", ""),
-        ("Represas", 70600, "", "")
+        ("Castores Estimados", "110.000+", ""),
+        ("Hectares Devastados", "31.000 ha", ""),
+        ("Represas Construídas", "70.600", "")
     ]),
     ("🌊 El Niño 2026", [
-        ("Probabilidade", 98, "%", ""),
-        ("Niño 3.4", 0.9, "°C", ""),
-        ("Previsão Pico", 2.4, "°C", ""),
-        ("Super El Niño", 33, "%", "")
+        ("Probabilidade", "98%", ""),
+        ("Niño 3.4 Atual", "+0.9°C", ""),
+        ("Previsão Pico", "+2.4°C", ""),
+        ("Super El Niño", "33%", "")
     ])
 ]
 
-# Exibir Slide Atual
-current = 0  # Por enquanto fixo - o JS fará o reload
+# Controle de Slide
+if 'slide' not in st.session_state:
+    st.session_state.slide = 0
+if 'last_change' not in st.session_state:
+    st.session_state.last_change = datetime.now()
 
-theme_name, kpis = themes[current]
+# Auto-advance
+if (datetime.now() - st.session_state.last_change).total_seconds() > 15:
+    st.session_state.slide = (st.session_state.slide + 1) % len(themes)
+    st.session_state.last_change = datetime.now()
+    st.rerun()
+
+# Exibir Slide Atual
+theme_name, kpis = themes[st.session_state.slide]
 
 st.markdown(f"<h2 style='text-align:center; color:#2ecc71; margin:30px 0;'>{theme_name}</h2>", unsafe_allow_html=True)
 
 cols = st.columns(len(kpis))
-for i, (label, value, unit, delta) in enumerate(kpis):
-    num_id = f"num_{i}"
+for i, (label, value, delta) in enumerate(kpis):
     color = "#2ecc71" if "↑" in delta else "#e74c3c"
-    
     with cols[i]:
         st.markdown(f"""
         <div class="kpi-card">
-            <div class="kpi-number" id="{num_id}">{value}</div>
-            <div class="kpi-label">{label} {unit}</div>
+            <div class="kpi-number">{value}</div>
+            <div class="kpi-label">{label}</div>
             <div class="delta" style="color:{color};">{delta}</div>
         </div>
         """, unsafe_allow_html=True)
-        
-        # Animação de contagem
-        if isinstance(value, (int, float)):
-            st.markdown(f"""
-            <script>
-                setTimeout(() => animateCount("{num_id}", 0, {value}, 2000), 400);
-            </script>
-            """, unsafe_allow_html=True)
 
-st.caption("● Troca automática a cada 15 segundos")
+st.caption(f"● Slide {st.session_state.slide + 1} de {len(themes)} • Troca automática a cada 15 segundos")
+
+col_btn1, col_btn2, col_btn3 = st.columns([1, 2, 1])
+with col_btn2:
+    if st.button("⏭ Próximo Tema", use_container_width=True):
+        st.session_state.slide = (st.session_state.slide + 1) % len(themes)
+        st.session_state.last_change = datetime.now()
+        st.rerun()
