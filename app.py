@@ -9,53 +9,63 @@ html_code = """
 <head>
     <meta charset="utf-8">
     <style>
-        body { margin: 0; padding: 0; background: #050505; color: white; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
-        .header { text-align: center; padding: 20px 0 10px 0; border-bottom: 1px solid rgba(46,204,113,0.3); position: relative; }
+        body { 
+            margin: 0; padding: 0; background: #050505; color: white; 
+            font-family: 'Segoe UI', sans-serif; overflow: hidden;
+        }
+        .header { 
+            text-align: center; 
+            padding: 15px 0 10px 0; 
+            border-bottom: 1px solid rgba(46,204,113,0.3); 
+            position: relative;
+        }
         .title { 
             font-size: 3.8rem; 
             background: linear-gradient(90deg, #2ecc71, #3498db);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin: 0; letter-spacing: 5px;
+            margin: 5px 0 0 0; 
+            letter-spacing: 5px;
         }
         .subtitle { 
             color: #2ecc71; 
             font-size: 1.45rem; 
-            margin: 8px 0 25px 0;
+            margin: 5px 0 20px 0;
             font-weight: 400;
         }
         .lang-buttons {
-            position: absolute; top: 35px; right: 40px; display: flex; gap: 8px;
+            position: absolute; top: 25px; right: 40px; display: flex; gap: 8px;
         }
         .lang-btn {
-            padding: 8px 16px; background: rgba(46,204,113,0.15); color: #2ecc71;
+            padding: 7px 14px; background: rgba(46,204,113,0.15); color: #2ecc71;
             border: 1px solid #2ecc71; border-radius: 30px; cursor: pointer;
-            font-size: 0.95rem; transition: all 0.3s;
+            font-size: 0.92rem; transition: all 0.3s;
         }
         .lang-btn:hover, .lang-btn.active { background: #2ecc71; color: black; }
 
         .slide-container {
             display: flex; justify-content: center; align-items: center;
-            min-height: 68vh; transition: opacity 0.8s;
+            min-height: 72vh; transition: opacity 0.8s;
+            padding-top: 10px;
         }
         .kpi-card {
             background: rgba(15, 25, 40, 0.95);
             border: 2px solid #2ecc71;
             border-radius: 20px;
-            padding: 40px 30px;
-            width: 360px;
+            padding: 38px 28px;
+            width: 355px;
             text-align: center;
             box-shadow: 0 0 40px rgba(46, 204, 113, 0.4);
-            margin: 12px;
+            margin: 10px;
         }
-        .kpi-number { font-size: 4.1rem; font-weight: bold; color: #2ecc71; margin: 15px 0; }
-        .kpi-label { font-size: 1.3rem; color: #ddd; margin-bottom: 10px; }
-        .delta { font-size: 1.55rem; font-weight: bold; }
+        .kpi-number { font-size: 4rem; font-weight: bold; color: #2ecc71; margin: 12px 0; }
+        .kpi-label { font-size: 1.25rem; color: #ddd; margin-bottom: 8px; }
+        .delta { font-size: 1.5rem; font-weight: bold; }
 
         .bottom-bar {
             position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(10,20,35,0.95); padding: 14px 0;
+            background: rgba(10,20,35,0.95); padding: 12px 0;
             border-top: 2px solid #2ecc71; text-align: center;
-            font-size: 0.95rem; color: #aaa;
+            font-size: 0.93rem; color: #aaa;
         }
     </style>
 </head>
@@ -178,8 +188,8 @@ html_code = """
             const theme = themes[index];
             const lang = currentLang;
             
-            let html = `<h2 style="text-align:center; color:#2ecc71; margin-bottom:40px;">${theme.name[lang]}</h2>`;
-            html += '<div style="display:flex; gap:25px; justify-content:center; flex-wrap:wrap;">';
+            let html = `<h2 style="text-align:center; color:#2ecc71; margin-bottom:35px;">${theme.name[lang]}</h2>`;
+            html += '<div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">';
             
             theme.kpis.forEach((kpi, i) => {
                 html += `
@@ -197,7 +207,7 @@ html_code = """
                     const el = document.getElementById(`num${index}_${i}`);
                     if (el) animateCount(el, kpi.value);
                 });
-            }, 400);
+            }, 300);
         }
 
         // Inicialização
@@ -211,4 +221,4 @@ html_code = """
 </html>
 """
 
-st.components.v1.html(html_code, height=850, scrolling=True)
+st.components.v1.html(html_code, height=820, scrolling=True)
