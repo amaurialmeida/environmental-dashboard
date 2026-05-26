@@ -15,25 +15,17 @@ html_code = """
         }
         .header { 
             text-align: center; 
-            padding: 15px 0 10px 0; 
-            border-bottom: 1px solid rgba(46,204,113,0.3); 
+            padding: 25px 0 15px 0; 
             position: relative;
         }
-        .title { 
-            font-size: 3.8rem; 
-            background: linear-gradient(90deg, #2ecc71, #3498db);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin: 5px 0 0 0; 
-            letter-spacing: 5px;
-        }
-        .subtitle { 
-            color: #2ecc71; 
-            font-size: 1.45rem; 
-            margin: 5px 0 20px 0;
-            font-weight: 400;
+        .main-title { 
+            font-size: 2.8rem; 
+            color: #2ecc71;
+            margin: 10px 0 8px 0;
+            font-weight: 500;
         }
         .lang-buttons {
-            position: absolute; top: 25px; right: 40px; display: flex; gap: 8px;
+            position: absolute; top: 30px; right: 40px; display: flex; gap: 8px;
         }
         .lang-btn {
             padding: 7px 14px; background: rgba(46,204,113,0.15); color: #2ecc71;
@@ -76,8 +68,7 @@ html_code = """
             <div class="lang-btn" id="btn-en" onclick="setLanguage('en')">🇺🇸 EN</div>
             <div class="lang-btn" id="btn-es" onclick="setLanguage('es')">🇪🇸 ES</div>
         </div>
-        <div class="title" id="main-title">GREENLOG</div>
-        <div class="subtitle" id="main-subtitle">Dados para um planeta mais verde!</div>
+        <div class="main-title" id="main-title">Dados para um planeta mais verde!</div>
     </div>
     
     <div id="slideContainer" class="slide-container"></div>
@@ -91,9 +82,9 @@ html_code = """
         let currentSlide = 0;
 
         const translations = {
-            pt: { title: "GREENLOG", subtitle: "Dados para um planeta mais verde!", bottom: "👇 Clique nos botões acima ou aguarde a transição automática" },
-            en: { title: "GREENLOG", subtitle: "Data for a greener planet!", bottom: "👇 Click above or wait for automatic transition" },
-            es: { title: "GREENLOG", subtitle: "¡Datos para un planeta más verde!", bottom: "👇 Haz clic arriba o espera la transición automática" }
+            pt: { title: "Dados para um planeta mais verde!", bottom: "👇 Clique nos botões acima ou aguarde a transição automática" },
+            en: { title: "Data for a greener planet!", bottom: "👇 Click above or wait for automatic transition" },
+            es: { title: "¡Datos para un planeta más verde!", bottom: "👇 Haz clic arriba o espera la transición automática" }
         };
 
         const themes = [
@@ -160,7 +151,6 @@ html_code = """
         function setLanguage(lang) {
             currentLang = lang;
             document.getElementById('main-title').textContent = translations[lang].title;
-            document.getElementById('main-subtitle').textContent = translations[lang].subtitle;
             document.getElementById('bottom-text').textContent = translations[lang].bottom;
             
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
