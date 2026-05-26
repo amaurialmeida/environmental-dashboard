@@ -3,47 +3,48 @@ import streamlit as st
 st.set_page_config(page_title="Greenlog • Environmental Intelligence", 
                    page_icon="🌱", layout="wide", initial_sidebar_state="collapsed")
 
-# ===================== CSS =====================
+# CSS Melhorado
 st.markdown("""
 <style>
     .title { 
-        font-size: 5.2rem; 
+        font-size: 5rem; 
         background: linear-gradient(90deg, #2ecc71, #3498db); 
         -webkit-background-clip: text; 
         -webkit-text-fill-color: transparent; 
         text-align: center; 
         font-weight: bold; 
+        letter-spacing: 4px;
     }
     .subtitle { 
         color: #2ecc71; 
         text-align: center; 
-        font-size: 2rem; 
-        margin-top: -30px;
+        font-size: 1.8rem; 
+        margin-top: -25px;
         margin-bottom: 40px;
     }
     .kpi-card {
         background: rgba(15, 25, 40, 0.95);
         border: 2px solid #2ecc71;
-        border-radius: 22px;
-        padding: 40px 25px;
+        border-radius: 20px;
+        padding: 30px 20px;
         text-align: center;
-        box-shadow: 0 0 35px rgba(46, 204, 113, 0.5);
+        box-shadow: 0 0 25px rgba(46, 204, 113, 0.4);
         height: 100%;
     }
     .kpi-number {
-        font-size: 4.2rem;
+        font-size: 3.5rem;
         font-weight: bold;
         color: #2ecc71;
-        margin: 15px 0;
+        margin: 10px 0;
     }
     .kpi-label {
-        font-size: 1.35rem;
+        font-size: 1.2rem;
         color: #ddd;
     }
     .delta {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-weight: bold;
-        margin-top: 15px;
+        margin-top: 10px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -57,6 +58,7 @@ with col2:
 
 st.markdown("---")
 
+# Dados
 themes = [
     ("🌍 Temperaturas Globais", [
         ("Temperatura Média Global", "14.92°C", "↑ 1.45%"),
@@ -109,18 +111,19 @@ themes = [
     ])
 ]
 
-# Controle simples de slide
+# Controle de slide
 if 'current_slide' not in st.session_state:
     st.session_state.current_slide = 0
 
 theme_name, kpis = themes[st.session_state.current_slide]
 
-st.markdown(f"<h2 style='text-align:center; color:#2ecc71; margin:30px 0;'>{theme_name}</h2>", unsafe_allow_html=True)
+st.markdown(f"<h2 style='text-align:center; color:#2ecc71; margin:25px 0;'>{theme_name}</h2>", unsafe_allow_html=True)
 
+# Mostra todos os cards do tema atual
 cols = st.columns(len(kpis))
-for label, value, delta in kpis:
+for idx, (label, value, delta) in enumerate(kpis):
     color = "#2ecc71" if "↑" in delta else "#e74c3c"
-    with cols[0]:  # Vamos usar uma coluna por vez para simplificar
+    with cols[idx]:
         st.markdown(f"""
         <div class="kpi-card">
             <div class="kpi-number">{value}</div>
@@ -128,9 +131,9 @@ for label, value, delta in kpis:
             <div class="delta" style="color:{color};">{delta}</div>
         </div>
         """, unsafe_allow_html=True)
-        break  # Temporariamente mostra só um card grande por vez para testar
 
-# Botões de Navegação
+# Navegação
+st.markdown("---")
 col_prev, col_next = st.columns(2)
 with col_prev:
     if st.button("← Tema Anterior", use_container_width=True):
