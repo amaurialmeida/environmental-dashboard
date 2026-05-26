@@ -15,33 +15,32 @@ html_code = """
         }
         .header { 
             text-align: center; 
-            padding: 25px 0 15px 0; 
-            position: relative;
+            padding: 20px 0 10px 0; 
         }
         .main-title { 
-            font-size: 2.8rem; 
+            font-size: 2.7rem; 
             color: #2ecc71;
-            margin: 10px 0 12px 0;
+            margin: 8px 0 12px 0;
             font-weight: 500;
         }
         .lang-buttons {
             display: flex; 
             justify-content: center; 
-            gap: 12px;
-            margin-bottom: 25px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
         .lang-btn {
-            padding: 8px 18px; 
+            padding: 7px 16px; 
             background: rgba(46,204,113,0.12); 
             color: #2ecc71;
             border: 1px solid #2ecc71; 
             border-radius: 30px; 
             cursor: pointer;
-            font-size: 0.95rem; 
+            font-size: 0.9rem; 
             transition: all 0.3s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
         }
         .lang-btn:hover, .lang-btn.active { 
             background: #2ecc71; 
@@ -52,29 +51,44 @@ html_code = """
             display: flex; 
             justify-content: center; 
             align-items: center;
-            min-height: 68vh; 
-            transition: opacity 0.8s;
+            min-height: 65vh; 
             padding-top: 10px;
         }
         .kpi-card {
             background: rgba(15, 25, 40, 0.95);
             border: 2px solid #2ecc71;
             border-radius: 20px;
-            padding: 38px 28px;
-            width: 355px;
+            padding: 35px 25px;
+            width: 340px;
             text-align: center;
-            box-shadow: 0 0 40px rgba(46, 204, 113, 0.4);
-            margin: 10px;
+            box-shadow: 0 0 35px rgba(46, 204, 113, 0.4);
+            margin: 8px;
         }
-        .kpi-number { font-size: 4rem; font-weight: bold; color: #2ecc71; margin: 12px 0; }
-        .kpi-label { font-size: 1.25rem; color: #ddd; margin-bottom: 8px; }
-        .delta { font-size: 1.5rem; font-weight: bold; }
+        .kpi-number { 
+            font-size: 3.9rem; 
+            font-weight: bold; 
+            color: #2ecc71; 
+            margin: 10px 0; 
+        }
+        .kpi-label { 
+            font-size: 1.2rem; 
+            color: #ddd; 
+            margin-bottom: 8px; 
+        }
+        .delta { 
+            font-size: 1.45rem; 
+            font-weight: bold; 
+        }
 
         .bottom-bar {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(10,20,35,0.95); padding: 12px 0;
-            border-top: 2px solid #2ecc71; text-align: center;
-            font-size: 0.93rem; color: #aaa;
+            position: fixed; 
+            bottom: 0; left: 0; right: 0;
+            background: rgba(10,20,35,0.95); 
+            padding: 12px 0;
+            border-top: 2px solid #2ecc71; 
+            text-align: center;
+            font-size: 0.9rem; 
+            color: #aaa;
         }
     </style>
 </head>
@@ -83,15 +97,9 @@ html_code = """
         <div class="main-title" id="main-title">Dados para um planeta mais verde!</div>
         
         <div class="lang-buttons">
-            <div class="lang-btn active" id="btn-pt" onclick="setLanguage('pt')">
-                🇧🇷 Português
-            </div>
-            <div class="lang-btn" id="btn-en" onclick="setLanguage('en')">
-                🇬🇧 English
-            </div>
-            <div class="lang-btn" id="btn-es" onclick="setLanguage('es')">
-                🇪🇸 Español
-            </div>
+            <div class="lang-btn active" id="btn-pt" onclick="setLanguage('pt')">🇧🇷 Português</div>
+            <div class="lang-btn" id="btn-en" onclick="setLanguage('en')">🇬🇧 English</div>
+            <div class="lang-btn" id="btn-es" onclick="setLanguage('es')">🇪🇸 Español</div>
         </div>
     </div>
     
@@ -202,8 +210,8 @@ html_code = """
             const theme = themes[index];
             const lang = currentLang;
             
-            let html = `<h2 style="text-align:center; color:#2ecc71; margin-bottom:35px;">${theme.name[lang]}</h2>`;
-            html += '<div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">';
+            let html = `<h2 style="text-align:center; color:#2ecc71; margin-bottom:25px;">${theme.name[lang]}</h2>`;
+            html += '<div style="display:flex; gap:18px; justify-content:center; flex-wrap:wrap;">';
             
             theme.kpis.forEach((kpi, i) => {
                 html += `
@@ -235,4 +243,4 @@ html_code = """
 </html>
 """
 
-st.components.v1.html(html_code, height=820, scrolling=True)
+st.components.v1.html(html_code, height=800, scrolling=True)
