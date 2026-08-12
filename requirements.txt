@@ -1,0 +1,10 @@
+streamlit
+plotly
+polars
+pydeck
+pandas
+scikit-learn
+duckdb
+geopandas
+folium
+streamlit-option-menu
