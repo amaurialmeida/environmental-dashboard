@@ -11,6 +11,7 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets" / "screens"
+DEBUG = ROOT / "debug"
 OUT.mkdir(parents=True, exist_ok=True)
 projects = json.loads((ROOT / "data" / "projects.json").read_text(encoding="utf-8"))
 only = set(sys.argv[1:])
@@ -24,17 +25,25 @@ with sync_playwright() as p:
         page = browser.new_page(viewport={"width": 1280, "height": 800})
         try:
             page.goto(pr["url"] + "?embed=true", wait_until="domcontentloaded", timeout=60000)
-            # app dormindo: botão "Yes, get this app back up!"
-            wake = page.get_by_role("button", name="get this app back up")
+            # Espera aparecer o app OU a tela "app dormindo" (o botão só surge depois que a página carrega)
+            page.wait_for_selector('[data-testid="stApp"], button:has-text("get this app back up")', timeout=60000)
+            extra = 15000
+            wake = page.locator('button:has-text("get this app back up")')
             if wake.count():
                 wake.first.click()
-            page.wait_for_selector('[data-testid="stApp"]', timeout=120000)
-            page.wait_for_timeout(15000)      # tempo para mapas e gráficos desenharem
+                page.wait_for_selector('[data-testid="stApp"]', timeout=180000)
+                extra = 40000                   # app recém-acordado demora mais para desenhar
+            page.wait_for_timeout(extra)        # tempo para mapas e gráficos desenharem
             page.screenshot(path=str(OUT / f"{pr['slug']}.png"))
             print("ok", pr["slug"])
             done.append(pr["slug"])
-        except Exception as e:                  # mantém o print anterior
-            print("falhou", pr["slug"], e)
+        except Exception as e:                  # mantém o print anterior e guarda uma foto da falha
+            print("falhou", pr["slug"], str(e).splitlines()[0])
+            try:
+                DEBUG.mkdir(parents=True, exist_ok=True)
+                page.screenshot(path=str(DEBUG / f"{pr['slug']}.png"))
+            except Exception:
+                pass
         finally:
             page.close()
     browser.close()

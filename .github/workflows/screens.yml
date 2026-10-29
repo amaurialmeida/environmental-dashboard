@@ -11,7 +11,7 @@ permissions:
 jobs:
   screens:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -19,6 +19,13 @@ jobs:
           python-version: "3.11"
       - run: pip install playwright && playwright install --with-deps chromium
       - run: python scripts/capture_screens.py
+      - name: Guardar fotos das falhas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug
+          path: debug
+          if-no-files-found: ignore
       - name: Listar prints
         run: ls -la assets/screens
       - name: Salvar prints
