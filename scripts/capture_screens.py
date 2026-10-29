@@ -14,6 +14,7 @@ OUT = ROOT / "assets" / "screens"
 OUT.mkdir(parents=True, exist_ok=True)
 projects = json.loads((ROOT / "data" / "projects.json").read_text(encoding="utf-8"))
 only = set(sys.argv[1:])
+done = []
 
 with sync_playwright() as p:
     browser = p.chromium.launch()
@@ -31,8 +32,13 @@ with sync_playwright() as p:
             page.wait_for_timeout(15000)      # tempo para mapas e gráficos desenharem
             page.screenshot(path=str(OUT / f"{pr['slug']}.png"))
             print("ok", pr["slug"])
+            done.append(pr["slug"])
         except Exception as e:                  # mantém o print anterior
             print("falhou", pr["slug"], e)
         finally:
             page.close()
     browser.close()
+
+print(f"{len(done)} prints gerados:", ", ".join(done) or "nenhum")
+if not done:
+    sys.exit(1)          # a Action fica vermelha se nada foi gerado
