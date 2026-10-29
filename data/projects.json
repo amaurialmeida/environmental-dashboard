@@ -1,0 +1,14 @@
+[
+ {"slug":"temperatures","icon":"🌍","url":"https://earth-max-min-temp-history-4dwrafuhe7a5uhaqdkkzld.streamlit.app/","theme":"temperatures"},
+ {"slug":"solar","icon":"☀️","url":"https://solar-university-nw-sp.streamlit.app/","theme":"solar"},
+ {"slug":"bee-collapse","icon":"🐝","url":"https://bee-colony-collapse-brazil.streamlit.app/","theme":null},
+ {"slug":"stingless","icon":"🐝","url":"https://stingless-bee-observatory-br.streamlit.app/","theme":"stingless"},
+ {"slug":"wind","icon":"🌬️","url":"https://patagonia-wind-energy.streamlit.app/","theme":"wind"},
+ {"slug":"water","icon":"💧","url":"https://patagonia-water-quality.streamlit.app/","theme":"water"},
+ {"slug":"seismic","icon":"🌋","url":"https://patagonia-seismic.streamlit.app/","theme":"seismic"},
+ {"slug":"invasive","icon":"🌿","url":"https://invasive-alien-species-impact.streamlit.app/","theme":"invasive"},
+ {"slug":"el-nino","icon":"🌊","url":"https://el-nino-2026-ml-forecast.streamlit.app/","theme":"el-nino"},
+ {"slug":"road","icon":"🚗","url":"https://road-to-patagonia.streamlit.app/","theme":null},
+ {"slug":"carbon","icon":"👣","url":"https://carbon-footprint-tracker-tkfv5pthky3rk2gd8m9mm8.streamlit.app/","theme":null},
+ {"slug":"santa-rita","icon":"🏞️","url":"https://santa-rita-river-observatory.streamlit.app/","theme":null}
+]

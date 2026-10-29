@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        * { box-sizing: border-box; }
+        html, body { 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: #050505; 
+            color: white; 
+            font-family: 'Segoe UI', sans-serif; 
+            overflow: hidden;
+        }
+        .dashboard-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+        .header { 
+            text-align: center; 
+            position: relative;
+            z-index: 10;
+            background: rgba(5, 5, 5, 0.65);
+            backdrop-filter: blur(6px);
+            padding-bottom: 8px;
+        }
+        .main-title { 
+            font-size: 2.2rem; 
+            color: #2ecc71;
+            margin: 2px 0 8px 0;
+            font-weight: 600;
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+        }
+        .lang-buttons {
+            display: flex; 
+            justify-content: center; 
+            gap: 6px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .lang-btn {
+            padding: 4px 10px; 
+            background: rgba(46,204,113,0.12); 
+            color: #2ecc71;
+            border: 1px solid #2ecc71; 
+            border-radius: 16px; 
+            cursor: pointer;
+            font-size: 0.75rem; 
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .lang-btn:hover, .lang-btn.active { 
+            background: #2ecc71; 
+            color: black; 
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
+        }
+
+        /* Container do Mapa Windy (Marca d'água de fundo cobrindo 100%) */
+        .map-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.5;
+            filter: hue-rotate(-15deg) brightness(0.75) contrast(1.2);
+            pointer-events: none;
+        }
+
+        .slide-container {
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            flex-grow: 1;
+            position: relative;
+            z-index: 5;
+            width: 100%;
+        }
+        
+        .kpi-wrapper {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1300px;
+        }
+
+        .kpi-card {
+            background: rgba(10, 20, 35, 0.88);
+            border: 2px solid #2ecc71;
+            border-radius: 16px;
+            padding: 22px 15px;
+            flex: 1;
+            min-width: 220px;
+            max-width: 280px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(46, 204, 113, 0.25);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .kpi-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 40px rgba(46, 204, 113, 0.6);
+            border-color: #2ecc71;
+        }
+
+        .kpi-number { 
+            font-size: 2.8rem; 
+            font-weight: bold; 
+            color: #2ecc71; 
+            margin: 6px 0; 
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+        }
+        .kpi-label { 
+            font-size: 0.95rem; 
+            color: #cbd5e1; 
+            margin-bottom: 4px; 
+            font-weight: 500;
+        }
+        .delta { 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+        }
+        
+        .bottom-bar {
+            text-align: center;
+            font-size: 0.8rem; 
+            color: #94a3b8;
+            z-index: 10;
+            background: rgba(10, 20, 35, 0.8);
+            padding: 8px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            backdrop-filter: blur(5px);
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .bottom-bar { cursor: pointer; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .bottom-bar:hover, .bottom-bar:focus-visible { border-color: #2ecc71; box-shadow: 0 0 18px rgba(46, 204, 113, 0.55); outline: none; }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(5,5,5,0.1) 0%, rgba(5,5,5,0.85) 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-background">
+        <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://embed.windy.com/embed2.html?lat=-15.783&lon=-47.867&detailLat=-15.783&detailLon=-47.867&width=1200&height=800&zoom=3&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1" 
+            frameborder="0"
+            style="border:0;">
+        </iframe>
+    </div>
+    
+    <div class="overlay"></div>
+
+    <div class="dashboard-wrapper">
+        <div class="header">
+            <div class="main-title" id="main-title">Dados para um planeta mais verde!</div>
+            
+            <div class="lang-buttons">
+                <div class="lang-btn" id="btn-pt" onclick="setLanguage('pt')">🇧🇷 PT</div>
+                <div class="lang-btn" id="btn-en" onclick="setLanguage('en')">🇬🇧 EN</div>
+                <div class="lang-btn" id="btn-es" onclick="setLanguage('es')">🇪🇸 ES</div>
+                <div class="lang-btn" id="btn-it" onclick="setLanguage('it')">🇮🇹 IT</div>
+                <div class="lang-btn" id="btn-fr" onclick="setLanguage('fr')">🇫🇷 FR</div>
+                <div class="lang-btn" id="btn-de" onclick="setLanguage('de')">🇩🇪 DE</div>
+                <div class="lang-btn" id="btn-zh" onclick="setLanguage('zh')">🇨🇳 ZH</div>
+                <div class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">🇸🇦 AR</div>
+                <div class="lang-btn" id="btn-el" onclick="setLanguage('el')">🇬🇷 EL</div>
+            </div>
+        </div>
+        
+        <div id="slideContainer" class="slide-container"></div>
+
+        <div class="bottom-bar" id="bottom-text" role="button" tabindex="0" onclick="openRouter()" onkeydown="if(event.key==='Enter'||event.key===' '){openRouter()}">
+            👇 Clique nos botões acima ou aguarde a transição automática
+        </div>
+    </div>
+
+    <script>
+        let currentLang = '__LANG__';
+        let currentSlide = 0;
+
+        const translations = /*__TRANSLATIONS__*/;
+
+        const themes = /*__THEMES__*/;
+
+        function openRouter() {
+            try {
+                const links = parent.document.querySelectorAll('[data-testid="stSidebarNavLink"]');
+                for (const a of links) {
+                    if ((a.getAttribute('href') || '').indexOf('signal-router') > -1) { a.click(); return; }
+                }
+            } catch (e) {}
+            try { window.open(parent.location.origin + '/signal-router', '_top'); }
+            catch (e) { window.open('/signal-router', '_blank'); }
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('main-title').textContent = translations[lang].title;
+            document.getElementById('bottom-text').textContent = translations[lang].bottom;
+            document.getElementById('bottom-text').title = translations[lang].open || '';
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+            renderSlide(currentSlide);
+        }
+
+        const LOCALES = {pt:'pt-BR', en:'en-US', es:'es-ES', it:'it-IT', fr:'fr-FR', de:'de-DE', zh:'zh-CN', ar:'ar-EG-u-nu-latn', el:'el-GR'};
+
+        function fmt(value, kpi) {
+            const dec = (String(kpi.value).split('.')[1] || '').length;
+            return value.toLocaleString(LOCALES[currentLang] || 'pt-BR', {
+                minimumFractionDigits: dec, maximumFractionDigits: dec,
+                useGrouping: kpi.fmt !== 'year'
+            }) + (kpi.unit ? ' ' + kpi.unit : '');
+        }
+
+        function animateCount(element, kpi) {
+            const end = kpi.value;
+            const dec = (String(end).split('.')[1] || '').length;
+            const duration = 1600;
+            const startTime = Date.now();
+
+            function update() {
+                const progress = Math.min((Date.now() - startTime) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const v = ease * end;
+                element.textContent = fmt(dec ? v : Math.floor(v), kpi);
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = fmt(end, kpi);
+                }
+            }
+            update();
+        }
+
+        function renderSlide(index) {
+            const theme = themes[index];
+            const container = document.getElementById('slideContainer');
+            
+            let html = `
+                <div style="font-size: 1.4rem; color: #2ecc71; margin-bottom: 12px; font-weight: 600; text-shadow: 0 0 10px rgba(46,204,113,0.4);">
+                    ${theme.name[currentLang] || theme.name['pt']}
+                </div>
+                <div class="kpi-wrapper">
+            `;
+            
+            theme.kpis.forEach((kpi, i) => {
+                const labelText = kpi.label[currentLang] || kpi.label['pt'];
+                html += `
+                    <div class="kpi-card">
+                        <div class="kpi-label">${labelText}</div>
+                        <div class="kpi-number" id="val-${index}-${i}">0</div>
+                        ${kpi.delta ? `<div class="delta" style="color: ${kpi.delta.includes('↑') ? '#2ecc71' : '#e74c3c'}">${kpi.delta}</div>` : ''}
+                    </div>
+                `;
+            });
+            
+            html += `</div>`;
+            container.innerHTML = html;
+            
+            theme.kpis.forEach((kpi, i) => {
+                const el = document.getElementById(`val-${index}-${i}`);
+                if (el) {
+                    animateCount(el, kpi);
+                }
+            });
+        }
+
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % themes.length;
+            renderSlide(currentSlide);
+        }, 6000);
+
+        setLanguage(currentLang);
+    </script>
+</body>
+</html>
