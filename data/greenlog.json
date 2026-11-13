@@ -1,0 +1,896 @@
+{
+ "translations": {
+  "pt": {
+   "title": "Dados para um planeta mais verde!",
+   "bottom": "👇 Clique nos botões acima ou aguarde a transição automática",
+   "open": "Abrir o Environmental Signal Router",
+   "legendTitle": "COMO LER OS NÚMEROS",
+   "legend": [
+    {
+     "term": "MWh",
+     "text": "Megawatt-hora: unidade de energia elétrica. 1 MWh = 1.000 kWh."
+    },
+    {
+     "term": "VU",
+     "text": "Vulnerável: categoria de risco da Lista Vermelha da IUCN. “4 VU” = 4 espécies vulneráveis."
+    },
+    {
+     "term": "ha",
+     "text": "Hectare: 10.000 m². 31.000 ha equivalem a cerca de 310 km²."
+    },
+    {
+     "term": "MW",
+     "text": "Megawatt: potência elétrica (1 MW = 1.000 kW). 9.500 MW = potencial total estimado."
+    },
+    {
+     "term": "CO₂ evitado",
+     "text": "Toneladas de CO₂ que deixaram de ir para a atmosfera. 953 t = 953 toneladas evitadas."
+    },
+    {
+     "term": "Réplicas",
+     "text": "Tremores menores após o terremoto principal. “50+” = mais de 50 registrados."
+    },
+    {
+     "term": "GBIF",
+     "text": "Rede mundial aberta de registros de biodiversidade."
+    },
+    {
+     "term": "IQA",
+     "text": "Índice de Qualidade da Água, de 0 a 100. 81,9 indica qualidade boa a ótima."
+    }
+   ]
+  },
+  "en": {
+   "title": "Data for a greener planet!",
+   "bottom": "👇 Click above or wait for automatic transition",
+   "open": "Open the Environmental Signal Router",
+   "legendTitle": "HOW TO READ THE NUMBERS",
+   "legend": [
+    {
+     "term": "MWh",
+     "text": "Megawatt-hour: a unit of electrical energy. 1 MWh = 1,000 kWh."
+    },
+    {
+     "term": "VU",
+     "text": "Vulnerable: an IUCN Red List threat category. “4 VU” = 4 vulnerable species."
+    },
+    {
+     "term": "ha",
+     "text": "Hectare: 10,000 m². 31,000 ha is about 310 km²."
+    },
+    {
+     "term": "MW",
+     "text": "Megawatt: electrical power (1 MW = 1,000 kW). 9,500 MW = estimated total potential."
+    },
+    {
+     "term": "CO₂ avoided",
+     "text": "Tonnes of CO₂ kept out of the atmosphere. 953 t = 953 tonnes avoided."
+    },
+    {
+     "term": "Aftershocks",
+     "text": "Smaller quakes following the main earthquake. “50+” = more than 50 recorded."
+    },
+    {
+     "term": "GBIF",
+     "text": "Global Biodiversity Information Facility: an open worldwide biodiversity-record network."
+    },
+    {
+     "term": "IQA",
+     "text": "Water Quality Index, from 0 to 100. 81.9 means good to excellent quality."
+    }
+   ]
+  },
+  "es": {
+   "title": "¡Datos para un planeta más verde!",
+   "bottom": "👇 Haz clic arriba o espera la transición automática",
+   "open": "Abrir el Environmental Signal Router",
+   "legendTitle": "CÓMO LEER LOS NÚMEROS",
+   "legend": [
+    {
+     "term": "MWh",
+     "text": "Megavatio-hora: unidad de energía eléctrica. 1 MWh = 1.000 kWh."
+    },
+    {
+     "term": "VU",
+     "text": "Vulnerable: categoría de riesgo de la Lista Roja de la UICN. “4 VU” = 4 especies vulnerables."
+    },
+    {
+     "term": "ha",
+     "text": "Hectárea: 10.000 m². 31.000 ha equivalen a unos 310 km²."
+    },
+    {
+     "term": "MW",
+     "text": "Megavatio: potencia eléctrica (1 MW = 1.000 kW). 9.500 MW = potencial total estimado."
+    },
+    {
+     "term": "CO₂ evitado",
+     "text": "Toneladas de CO₂ que no llegaron a la atmósfera. 953 t = 953 toneladas evitadas."
+    },
+    {
+     "term": "Réplicas",
+     "text": "Temblores menores después del terremoto principal. “50+” = más de 50 registrados."
+    },
+    {
+     "term": "GBIF",
+     "text": "Red mundial abierta de registros de biodiversidad."
+    },
+    {
+     "term": "IQA",
+     "text": "Índice de Calidad del Agua, de 0 a 100. 81,9 indica una calidad buena a excelente."
+    }
+   ]
+  },
+  "it": {
+   "title": "Dati per un pianeta più verde!",
+   "bottom": "👇 Clicca sopra o attendi la transizione automatica",
+   "open": "Apri l'Environmental Signal Router",
+   "legendTitle": "COME LEGGERE I NUMERI",
+   "legend": [
+    {
+     "term": "MWh",
+     "text": "Megawattora: unità di energia elettrica. 1 MWh = 1.000 kWh."
+    },
+    {
+     "term": "VU",
+     "text": "Vulnerabile: categoria di rischio della Lista Rossa IUCN. “4 VU” = 4 specie vulnerabili."
+    },
+    {
+     "term": "ha",
+     "text": "Ettaro: 10.000 m². 31.000 ha equivalgono a circa 310 km²."
+    },
+    {
+     "term": "MW",
+     "text": "Megawatt: potenza elettrica (1 MW = 1.000 kW). 9.500 MW = potenziale totale stimato."
+    },
+    {
+     "term": "CO₂ evitata",
+     "text": "Tonnellate di CO₂ non immesse nell’atmosfera. 953 t = 953 tonnellate evitate."
+    },
+    {
+     "term": "Repliche",
+     "text": "Scosse minori dopo il terremoto principale. “50+” = più di 50 registrate."
+    },
+    {
+     "term": "GBIF",
+     "text": "Rete mondiale aperta di dati sulla biodiversità."
+    },
+    {
+     "term": "IQA",
+     "text": "Indice di Qualità dell’Acqua, da 0 a 100. 81,9 indica una qualità buona o ottima."
+    }
+   ]
+  },
+  "fr": {
+   "title": "Des données pour une planète plus verte !",
+   "bottom": "👇 Cliquez ci-dessus ou attendez la transition automatique",
+   "open": "Ouvrir l'Environmental Signal Router",
+   "legendTitle": "COMMENT LIRE LES CHIFFRES",
+   "legend": [
+    {
+     "term": "MWh",
+     "text": "Mégawatt-heure : unité d’énergie électrique. 1 MWh = 1 000 kWh."
+    },
+    {
+     "term": "VU",
+     "text": "Vulnérable : catégorie de risque de la Liste rouge de l’UICN. « 4 VU » = 4 espèces vulnérables."
+    },
+    {
+     "term": "ha",
+     "text": "Hectare : 10 000 m². 31 000 ha représentent environ 310 km²."
+    },
+    {
+     "term": "MW",
+     "text": "Mégawatt : puissance électrique (1 MW = 1 000 kW). 9 500 MW = potentiel total estimé."
+    },
+    {
+     "term": "CO₂ évité",
+     "text": "Tonnes de CO₂ non rejetées dans l’atmosphère. 953 t = 953 tonnes évitées."
+    },
+    {
+     "term": "Répliques",
+     "text": "Séismes plus faibles après le séisme principal. « 50+ » = plus de 50 enregistrés."
+    },
+    {
+     "term": "GBIF",
+     "text": "Réseau mondial ouvert de données sur la biodiversité."
+    },
+    {
+     "term": "IQA",
+     "text": "Indice de qualité de l’eau, de 0 à 100. 81,9 indique une qualité bonne à excellente."
+    }
+   ]
+  },
+  "de": {
+   "title": "Daten für einen grüneren Planeten!",
+   "bottom": "👇 Klicken Sie oben oder warten Sie auf den automatischen Übergang",
+   "open": "Environmental Signal Router öffnen",
+   "legendTitle": "SO LESEN SIE DIE ZAHLEN",
+   "legend": [
+    {
+     "term": "MWh",
+     "text": "Megawattstunde: Einheit elektrischer Energie. 1 MWh = 1.000 kWh."
+    },
+    {
+     "term": "VU",
+     "text": "Gefährdet: Risikokategorie der IUCN-Roten Liste. „4 VU“ = 4 gefährdete Arten."
+    },
+    {
+     "term": "ha",
+     "text": "Hektar: 10.000 m². 31.000 ha entsprechen etwa 310 km²."
+    },
+    {
+     "term": "MW",
+     "text": "Megawatt: elektrische Leistung (1 MW = 1.000 kW). 9.500 MW = geschätztes Gesamtpotenzial."
+    },
+    {
+     "term": "CO₂ vermieden",
+     "text": "Tonnen CO₂, die nicht in die Atmosphäre gelangten. 953 t = 953 vermiedene Tonnen."
+    },
+    {
+     "term": "Nachbeben",
+     "text": "Schwächere Beben nach dem Hauptbeben. „50+“ = mehr als 50 registriert."
+    },
+    {
+     "term": "GBIF",
+     "text": "Offenes weltweites Netzwerk für Biodiversitätsdaten."
+    },
+    {
+     "term": "IQA",
+     "text": "Wasserqualitätsindex von 0 bis 100. 81,9 bedeutet gute bis sehr gute Qualität."
+    }
+   ]
+  },
+  "zh": {
+   "title": "为更绿色的星球提供数据！",
+   "bottom": "👇 点击上方或等待自动切换",
+   "open": "打开 Environmental Signal Router",
+   "legendTitle": "如何阅读这些数字",
+   "legend": [
+    {
+     "term": "MWh",
+     "text": "兆瓦时：电能单位。1 MWh = 1,000 kWh。"
+    },
+    {
+     "term": "VU",
+     "text": "易危：IUCN 红色名录的风险类别。“4 VU”表示 4 个易危物种。"
+    },
+    {
+     "term": "ha",
+     "text": "公顷：10,000 平方米。31,000 公顷约等于 310 平方公里。"
+    },
+    {
+     "term": "MW",
+     "text": "兆瓦：电功率单位（1 MW = 1,000 kW）。9,500 MW 为估计总潜力。"
+    },
+    {
+     "term": "CO₂ 避免排放",
+     "text": "未进入大气的二氧化碳吨数。953 t 表示避免排放 953 吨。"
+    },
+    {
+     "term": "余震",
+     "text": "主震后的较小地震。“50+”表示记录超过 50 次。"
+    },
+    {
+     "term": "GBIF",
+     "text": "全球开放的生物多样性记录网络。"
+    },
+    {
+     "term": "IQA",
+     "text": "水质指数，范围 0 到 100。81.9 表示水质良好至优秀。"
+    }
+   ]
+  },
+  "ar": {
+   "title": "بيانات من أجل كوكب أكثر خضرة!",
+   "bottom": "👇 انقر أعلاه أو انتظر الانتقال التلقائي",
+   "open": "افتح Environmental Signal Router",
+   "legendTitle": "كيفية قراءة الأرقام",
+   "legend": [
+    {
+     "term": "MWh",
+     "text": "ميغاواط-ساعة: وحدة للطاقة الكهربائية. 1 MWh = 1,000 kWh."
+    },
+    {
+     "term": "VU",
+     "text": "معرّض للخطر: فئة خطر في القائمة الحمراء للاتحاد الدولي لحفظ الطبيعة. “4 VU” = 4 أنواع معرّضة للخطر."
+    },
+    {
+     "term": "ha",
+     "text": "هكتار: 10,000 م². تعادل 31,000 هكتار نحو 310 كم²."
+    },
+    {
+     "term": "MW",
+     "text": "ميغاواط: القدرة الكهربائية (1 MW = 1,000 kW). 9,500 MW = إجمالي الإمكانات المقدّرة."
+    },
+    {
+     "term": "CO₂ المتجنَّب",
+     "text": "أطنان ثاني أكسيد الكربون التي لم تصل إلى الغلاف الجوي. 953 t = 953 طنًا تم تجنّبها."
+    },
+    {
+     "term": "الهزات الارتدادية",
+     "text": "زلازل أصغر بعد الزلزال الرئيسي. “50+” = أكثر من 50 هزة مسجّلة."
+    },
+    {
+     "term": "GBIF",
+     "text": "شبكة عالمية مفتوحة لسجلات التنوع الحيوي."
+    },
+    {
+     "term": "IQA",
+     "text": "مؤشر جودة المياه من 0 إلى 100. تشير 81.9 إلى جودة جيدة إلى ممتازة."
+    }
+   ]
+  },
+  "el": {
+   "title": "Δεδομένα για έναν πιο πράσινο πλανήτη!",
+   "bottom": "👇 Κάντε κλικ παραπάνω ή περιμένετε την αυτόματη εναλλαγή",
+   "open": "Άνοιγμα του Environmental Signal Router",
+   "legendTitle": "ΠΩΣ ΝΑ ΔΙΑΒΑΖΕΤΕ ΤΟΥΣ ΑΡΙΘΜΟΥΣ",
+   "legend": [
+    {
+     "term": "MWh",
+     "text": "Μεγαβατώρα: μονάδα ηλεκτρικής ενέργειας. 1 MWh = 1.000 kWh."
+    },
+    {
+     "term": "VU",
+     "text": "Ευάλωτο: κατηγορία κινδύνου του Κόκκινου Καταλόγου της IUCN. «4 VU» = 4 ευάλωτα είδη."
+    },
+    {
+     "term": "ha",
+     "text": "Εκτάριο: 10.000 m². 31.000 εκτάρια είναι περίπου 310 km²."
+    },
+    {
+     "term": "MW",
+     "text": "Μεγαβάτ: ηλεκτρική ισχύς (1 MW = 1.000 kW). 9.500 MW = εκτιμώμενο συνολικό δυναμικό."
+    },
+    {
+     "term": "CO₂ που αποφεύχθηκε",
+     "text": "Τόνοι CO₂ που δεν εισήλθαν στην ατμόσφαιρα. 953 t = 953 τόνοι που αποφεύχθηκαν."
+    },
+    {
+     "term": "Μετασεισμοί",
+     "text": "Μικρότερες δονήσεις μετά τον κύριο σεισμό. «50+» = πάνω από 50 καταγεγραμμένοι."
+    },
+    {
+     "term": "GBIF",
+     "text": "Ανοικτό παγκόσμιο δίκτυο καταγραφών βιοποικιλότητας."
+    },
+    {
+     "term": "IQA",
+     "text": "Δείκτης Ποιότητας Νερού από 0 έως 100. Το 81,9 σημαίνει καλή έως εξαιρετική ποιότητα."
+    }
+   ]
+  }
+ },
+ "themes": [
+  {
+   "name": {
+    "pt": "🌍 Temperaturas Globais",
+    "en": "🌍 Global Temperatures",
+    "es": "🌍 Temperaturas Globales",
+    "it": "🌍 Temperature Globali",
+    "fr": "🌍 Températures Mondiales",
+    "de": "🌍 Globale Temperaturen",
+    "zh": "🌍 全球气温",
+    "ar": "🌍 درجات الحرارة العالمية",
+    "el": "🌍 Παγκόσμιες Θερμοκρασίες"
+   },
+   "kpis": [
+    {
+     "label": {
+      "pt": "Temperatura Média Global",
+      "en": "Global Average Temperature",
+      "es": "Temperatura Media Global",
+      "it": "Temperatura Media Globale",
+      "fr": "Température Moyenne Mondiale",
+      "de": "Globale Durchschnittstemperatur",
+      "zh": "全球平均气温",
+      "ar": "متوسط درجة الحرارة العالمية",
+      "el": "Μέση Παγκόσμια Θερμοκρασία"
+     },
+     "value": 14.92,
+     "unit": "°C",
+     "delta": "↑ 1.45%"
+    },
+    {
+     "label": {
+      "pt": "Ano Mais Quente",
+      "en": "Hottest Year",
+      "es": "Año Más Caliente",
+      "it": "Anno Più Caldo",
+      "fr": "Année la Plus Chaude",
+      "de": "Wärmstes Jahr",
+      "zh": "最热年份",
+      "ar": "السنة الأشد حرارة",
+      "el": "Θερμότερο Έτος"
+     },
+     "value": 2024,
+     "unit": "",
+     "delta": "↑ 0.9%",
+     "fmt": "year",
+     "note": "2024 foi o ano mais quente (Copernicus/NASA/NOAA); 2025 ficou em 3º (Copernicus)"
+    },
+    {
+     "label": {
+      "pt": "Anomalia Atual",
+      "en": "Current Anomaly",
+      "es": "Anomalía Actual",
+      "it": "Anomalia Attuale",
+      "fr": "Anomalie Actuelle",
+      "de": "Aktuelle Anomalie",
+      "zh": "当前异常",
+      "ar": "الشذوذ الحالي",
+      "el": "Τρέχουσα Ανωμαλία"
+     },
+     "value": 1.54,
+     "unit": "°C",
+     "delta": "↑ 15%"
+    }
+   ],
+   "slug": "temperatures"
+  },
+  {
+   "name": {
+    "pt": "☀️ Energia Solar",
+    "en": "☀️ Solar Energy",
+    "es": "☀️ Energía Solar",
+    "it": "☀️ Energia Solare",
+    "fr": "☀️ Énergie Solaire",
+    "de": "☀️ Solarenergie",
+    "zh": "☀️ 太阳能",
+    "ar": "☀️ الطاقة الشمسية",
+    "el": "☀️ Ηλιακή Ενέργεια"
+   },
+   "kpis": [
+    {
+     "label": {
+      "pt": "Energia Gerada",
+      "en": "Energy Generated",
+      "es": "Energía Generada",
+      "it": "Energia Generata",
+      "fr": "Énergie Générée",
+      "de": "Erzeugte Energie",
+      "zh": "发电量",
+      "ar": "الطاقة المولدة",
+      "el": "Παραγόμενη Ενέργεια"
+     },
+     "value": 390,
+     "unit": "MWh",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "CO₂ Evitado",
+      "en": "CO₂ Avoided",
+      "es": "CO₂ Evitado",
+      "it": "CO₂ Evitato",
+      "fr": "CO₂ Évité",
+      "de": "Eingespartes CO₂",
+      "zh": "减少二氧化碳",
+      "ar": "تجنب انبعاثات ثاني أكسيد الكربون",
+      "el": "CO₂ που Αποφεύχθηκε"
+     },
+     "value": 953,
+     "unit": "t",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Árvores Equivalentes",
+      "en": "Equivalent Trees",
+      "es": "Árboles Equivalentes",
+      "it": "Alberi Equivalenti",
+      "fr": "Arbres Équivalents",
+      "de": "Äquivalente Bäume",
+      "zh": "相当于植树",
+      "ar": "الأشجار المكافئة",
+      "el": "Ισοδύναμα Δέντρα"
+     },
+     "value": 7250,
+     "unit": "",
+     "delta": ""
+    }
+   ],
+   "slug": "solar"
+  },
+  {
+   "name": {
+    "pt": "🐝 Abelhas sem Ferrão",
+    "en": "🐝 Stingless Bees",
+    "es": "🐝 Abejas sin Aguijón",
+    "it": "🐝 Ape Senza Pungiglione",
+    "fr": "🐝 Abeilles sans Dard",
+    "de": "🐝 Stachellose Bienen",
+    "zh": "🐝 无刺蜂",
+    "ar": "🐝 النحل عديم اللسع",
+    "el": "🐝 Μέλισσες Χωρίς Κεντρί"
+   },
+   "kpis": [
+    {
+     "label": {
+      "pt": "Espécies Monitoradas",
+      "en": "Monitored Species",
+      "es": "Especies Monitoreadas",
+      "it": "Specie Monitorate",
+      "fr": "Espèces Suivies",
+      "de": "Überwachte Arten",
+      "zh": "监测物种",
+      "ar": "الأنواع المراقَبة",
+      "el": "Είδη υπό Παρακολούθηση"
+     },
+     "value": 18,
+     "unit": "",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Registros GBIF",
+      "en": "GBIF Records",
+      "es": "Registros GBIF",
+      "it": "Registri GBIF",
+      "fr": "Registres GBIF",
+      "de": "GBIF-Einträge",
+      "zh": "GBIF记录",
+      "ar": "سجلات GBIF",
+      "el": "Εγγραφές GBIF"
+     },
+     "value": 24500,
+     "unit": "",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Estados Cobertos",
+      "en": "Covered States",
+      "es": "Estados Cubiertos",
+      "it": "Stati Coperti",
+      "fr": "États Couverts",
+      "de": "Abgedeckte Staaten",
+      "zh": "覆盖州数",
+      "ar": "الولايات المغطاة",
+      "el": "Πολιτείες που Καλύπτονται"
+     },
+     "value": 15,
+     "unit": "",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Espécies Ameaçadas",
+      "en": "Threatened Species",
+      "es": "Especies Amenazadas",
+      "it": "Specie Minacciate",
+      "fr": "Espèces Menacées",
+      "de": "Bedrohte Arten",
+      "zh": "受威胁物种",
+      "ar": "الأنواع المهددة بالانقراض",
+      "el": "Απειλούμενα Είδη"
+     },
+     "value": 4,
+     "unit": "VU",
+     "delta": ""
+    }
+   ],
+   "slug": "stingless"
+  },
+  {
+   "name": {
+    "pt": "🌬️ Potencial Eólico",
+    "en": "🌬️ Wind Potential",
+    "es": "🌬️ Potencial Eólico",
+    "it": "🌬️ Potenziale Eolico",
+    "fr": "🌬️ Potentiel Éolien",
+    "de": "🌬️ Windpotential",
+    "zh": "🌬️ 风能潜力",
+    "ar": "🌬️ الطاقة الريحية",
+    "el": "🌬️ Αιολικό Δυναμικό"
+   },
+   "kpis": [
+    {
+     "label": {
+      "pt": "Velocidade Média",
+      "en": "Average Speed",
+      "es": "Velocidad Media",
+      "it": "Velocità Media",
+      "fr": "Vitesse Moyenne",
+      "de": "Durchschnittsgeschwindigkeit",
+      "zh": "平均风速",
+      "ar": "السرعة المتوسطة",
+      "el": "Μέση Ταχύτητα"
+     },
+     "value": 30.2,
+     "unit": "km/h",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Fator de Capacidade",
+      "en": "Capacity Factor",
+      "es": "Factor de Capacidad",
+      "it": "Fattore di Capacità",
+      "fr": "Facteur de Capacité",
+      "de": "Kapazitätsfaktor",
+      "zh": "容量因数",
+      "ar": "عامل السعة",
+      "el": "Συντελεστής Χωρητικότητας"
+     },
+     "value": 60,
+     "unit": "%",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Rajada Máxima",
+      "en": "Max Gust",
+      "es": "Ráfaga Máxima",
+      "it": "Raffica Massima",
+      "fr": "Rafale Maximale",
+      "de": "Maximale Böe",
+      "zh": "最大阵风",
+      "ar": "السرعة القصوى للرياح",
+      "el": "Μέγιστη Ριπή"
+     },
+     "value": 130,
+     "unit": "km/h",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Potencial Total",
+      "en": "Total Potential",
+      "es": "Potencial Total",
+      "it": "Potenziale Totale",
+      "fr": "Potentiel Total",
+      "de": "Gesamtpotential",
+      "zh": "总潜力",
+      "ar": "الإمكانات الكلية",
+      "el": "Συνολικό Δυναμικό"
+     },
+     "value": 9500,
+     "unit": "MW",
+     "delta": ""
+    }
+   ],
+   "slug": "wind"
+  },
+  {
+   "name": {
+    "pt": "💧 Qualidade da Água",
+    "en": "💧 Water Quality",
+    "es": "💧 Calidad del Agua",
+    "it": "💧 Qualità dell'Acqua",
+    "fr": "💧 Qualité de l'Eau",
+    "de": "💧 Wasserqualität",
+    "zh": "💧 水质",
+    "ar": "💧 جودة المياه",
+    "el": "💧 Ποιότητα Νερού"
+   },
+   "kpis": [
+    {
+     "label": {
+      "pt": "IQA Médio",
+      "en": "Average IQA",
+      "es": "IQA Medio",
+      "it": "IQA Medio",
+      "fr": "IQA Moyen",
+      "de": "Durchschnittlicher IQA",
+      "zh": "平均水质指数",
+      "ar": "متوسط مؤشر جودة المياه",
+      "el": "Μέσος Δείκτης IQA"
+     },
+     "value": 81.9,
+     "unit": "",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Estações Excelente",
+      "en": "Excellent Stations",
+      "es": "Estaciones Excelentes",
+      "it": "Stazioni Eccellenti",
+      "fr": "Stations Excellentes",
+      "de": "Exzellente Stationen",
+      "zh": "优秀监测站",
+      "ar": "محطات ممتازة",
+      "el": "Σταθμοί Άριστης Ποιότητας"
+     },
+     "value": 3,
+     "unit": "/18",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Rios Monitorados",
+      "en": "Monitored Rivers",
+      "es": "Ríos Monitoreados",
+      "it": "Fiumi Monitorati",
+      "fr": "Rivières Suivies",
+      "de": "Überwachte Flüsse",
+      "zh": "监测河流",
+      "ar": "الأنهار المراقَبة",
+      "el": "Ποτάμια υπό Παρακολούθηση"
+     },
+     "value": 10,
+     "unit": "",
+     "delta": ""
+    }
+   ],
+   "slug": "water"
+  },
+  {
+   "name": {
+    "pt": "🌋 Monitoramento Sísmico",
+    "en": "🌋 Seismic Monitoring",
+    "es": "🌋 Monitoreo Sísmico",
+    "it": "🌋 Monitoraggio Sismico",
+    "fr": "🌋 Surveillance Sismique",
+    "de": "🌋 Seismische Überwachung",
+    "zh": "🌋 地震监测",
+    "ar": "🌋 الرصد الزلزالي",
+    "el": "🌋 Σεισμική Παρακολούθηση"
+   },
+   "kpis": [
+    {
+     "label": {
+      "pt": "Magnitude",
+      "en": "Magnitude",
+      "es": "Magnitud",
+      "it": "Magnitudo",
+      "fr": "Magnitude",
+      "de": "Magnitude",
+      "zh": "震级",
+      "ar": "القدر الزلزالي",
+      "el": "Μέγεθος"
+     },
+     "value": 7.4,
+     "unit": "",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Profundidade",
+      "en": "Depth",
+      "es": "Profundidad",
+      "it": "Profondità",
+      "fr": "Profondeur",
+      "de": "Tiefe",
+      "zh": "深度",
+      "ar": "العمق",
+      "el": "Βάθος"
+     },
+     "value": 10,
+     "unit": "km",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Réplicas",
+      "en": "Aftershocks",
+      "es": "Réplicas",
+      "it": "Repliche",
+      "fr": "Répliques",
+      "de": "Nachbeben",
+      "zh": "余震",
+      "ar": "الهزات الارتدادية",
+      "el": "Μετασεισμοί"
+     },
+     "value": 50,
+     "unit": "+",
+     "delta": ""
+    }
+   ],
+   "slug": "seismic"
+  },
+  {
+   "name": {
+    "pt": "🌿 Espécies Invasoras",
+    "en": "🌿 Invasive Species",
+    "es": "🌿 Especies Invasoras",
+    "it": "🌿 Specie Invasive",
+    "fr": "🌿 Espèces Invasives",
+    "de": "🌿 Invasive Arten",
+    "zh": "🌿 入侵物种",
+    "ar": "🌿 الأنواع الغازية",
+    "el": "🌿 Χωροκατακτητικά Είδη"
+   },
+   "kpis": [
+    {
+     "label": {
+      "pt": "Castores Estimados",
+      "en": "Estimated Beavers",
+      "es": "Castores Estimados",
+      "it": "Castori Stimati",
+      "fr": "Castors Estimés",
+      "de": "Geschätzte Biber",
+      "zh": "估计海狸数",
+      "ar": "القنادس المقدرة",
+      "el": "Εκτιμώμενοι Κάστορες"
+     },
+     "value": 110000,
+     "unit": "+",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Hectares Devastados",
+      "en": "Devastated Hectares",
+      "es": "Hectáreas Devastadas",
+      "it": "Ettari Devastati",
+      "fr": "Hectares Dévastés",
+      "de": "Zerstörte Hektar",
+      "zh": "受灾公顷数",
+      "ar": "الهكتارات المدمرة",
+      "el": "Καταστραμμένα Εκτάρια"
+     },
+     "value": 31000,
+     "unit": "ha",
+     "delta": ""
+    }
+   ],
+   "slug": "invasive"
+  },
+  {
+   "name": {
+    "pt": "🌊 El Niño 2026",
+    "en": "🌊 El Niño 2026",
+    "es": "🌊 El Niño 2026",
+    "it": "🌊 El Niño 2026",
+    "fr": "🌊 El Niño 2026",
+    "de": "🌊 El Niño 2026",
+    "zh": "🌊 2026 厄尔尼诺",
+    "ar": "🌊 إيل نينيو 2026",
+    "el": "🌊 El Niño 2026"
+   },
+   "kpis": [
+    {
+     "label": {
+      "pt": "Probabilidade",
+      "en": "Probability",
+      "es": "Probabilidad",
+      "it": "Probabilità",
+      "fr": "Probabilité",
+      "de": "Wahrscheinlichkeit",
+      "zh": "概率",
+      "ar": "الاحتمالية",
+      "el": "Πιθανότητα"
+     },
+     "value": 98,
+     "unit": "%",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Niño 3.4 Atual",
+      "en": "Current Niño 3.4",
+      "es": "Niño 3.4 Actual",
+      "it": "Niño 3.4 Attuale",
+      "fr": "Actuel Niño 3.4",
+      "de": "Aktueller Niño 3.4",
+      "zh": "当前 Niño 3.4",
+      "ar": "إيل نينيو 3.4 الحالي",
+      "el": "Τρέχον Niño 3.4"
+     },
+     "value": 0.9,
+     "unit": "°C",
+     "delta": ""
+    },
+    {
+     "label": {
+      "pt": "Previsão Pico",
+      "en": "Peak Forecast",
+      "es": "Previsión Pico",
+      "it": "Previsione di Picco",
+      "fr": "Prévision Pic",
+      "de": "Höchststand-Prognose",
+      "zh": "峰值预测",
+      "ar": "ذروة التوقع",
+      "el": "Πρόβλεψη Κορύφωσης"
+     },
+     "value": 2.4,
+     "unit": "°C",
+     "delta": ""
+    }
+   ],
+   "slug": "el-nino"
+  }
+ ]
+}
