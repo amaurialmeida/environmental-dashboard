@@ -1,0 +1,331 @@
+{
+ "heading": {
+  "pt": "COMO LER OS NÚMEROS",
+  "en": "HOW TO READ THE NUMBERS",
+  "es": "CÓMO LEER LOS NÚMEROS",
+  "it": "COME LEGGERE I NUMERI",
+  "fr": "COMMENT LIRE LES CHIFFRES",
+  "de": "ZAHLEN VERSTEHEN",
+  "zh": "如何解读这些数字",
+  "ar": "كيف تقرأ الأرقام",
+  "el": "ΠΩΣ ΔΙΑΒΑΖΟΝΤΑΙ ΟΙ ΑΡΙΘΜΟΙ",
+  "af": "HOE OM DIE GETALLE TE LEES"
+ },
+ "terms": {
+  "mwh": {
+   "t": {
+    "pt": "MWh",
+    "en": "MWh",
+    "es": "MWh",
+    "it": "MWh",
+    "fr": "MWh",
+    "de": "MWh",
+    "zh": "MWh",
+    "ar": "MWh",
+    "el": "MWh",
+    "af": "MWh"
+   },
+   "d": {
+    "pt": "Megawatt-hora: unidade de energia elétrica. 1 MWh = 1.000 kWh.",
+    "en": "Megawatt-hour: a unit of electrical energy. 1 MWh = 1,000 kWh.",
+    "es": "Megavatio-hora: unidad de energía eléctrica. 1 MWh = 1.000 kWh.",
+    "it": "Megawattora: unità di energia elettrica. 1 MWh = 1.000 kWh.",
+    "fr": "Mégawattheure : unité d'énergie électrique. 1 MWh = 1 000 kWh.",
+    "de": "Megawattstunde: Einheit elektrischer Energie. 1 MWh = 1.000 kWh.",
+    "zh": "兆瓦时：电能单位。1 MWh = 1,000 kWh。",
+    "ar": "ميغاواط-ساعة: وحدة قياس الطاقة الكهربائية. 1 MWh = 1,000 kWh.",
+    "el": "Μεγαβατώρα: μονάδα ηλεκτρικής ενέργειας. 1 MWh = 1.000 kWh.",
+    "af": "Megawatt-uur: 'n eenheid van elektriese energie. 1 MWh = 1 000 kWh."
+   }
+  },
+  "vu": {
+   "t": {
+    "pt": "VU",
+    "en": "VU",
+    "es": "VU",
+    "it": "VU",
+    "fr": "VU",
+    "de": "VU",
+    "zh": "VU",
+    "ar": "VU",
+    "el": "VU",
+    "af": "VU"
+   },
+   "d": {
+    "pt": "Vulnerável: categoria de risco da Lista Vermelha da IUCN. \"4 VU\" = 4 espécies vulneráveis.",
+    "en": "Vulnerable: a threat category on the IUCN Red List. \"4 VU\" = 4 vulnerable species.",
+    "es": "Vulnerable: categoría de amenaza de la Lista Roja de la UICN. \"4 VU\" = 4 especies vulnerables.",
+    "it": "Vulnerabile: categoria di rischio della Lista Rossa IUCN. \"4 VU\" = 4 specie vulnerabili.",
+    "fr": "Vulnérable : catégorie de menace de la Liste rouge de l'UICN. « 4 VU » = 4 espèces vulnérables.",
+    "de": "Gefährdet (Vulnerable): Kategorie der IUCN-Roten-Liste. „4 VU“ = 4 gefährdete Arten.",
+    "zh": "易危：IUCN 红色名录的受威胁等级。“4 VU”即 4 个易危物种。",
+    "ar": "معرَّض للخطر (VU): فئة تهديد في القائمة الحمراء للاتحاد الدولي لحفظ الطبيعة. «4 VU» = 4 أنواع معرَّضة للخطر.",
+    "el": "Τρωτό (Vulnerable): κατηγορία κινδύνου της Ερυθράς Λίστας της IUCN. «4 VU» = 4 τρωτά είδη.",
+    "af": "Kwesbaar: 'n bedreigingskategorie op die IUCN-rooilys. \"4 VU\" = 4 kwesbare spesies."
+   }
+  },
+  "ha": {
+   "t": {
+    "pt": "ha",
+    "en": "ha",
+    "es": "ha",
+    "it": "ha",
+    "fr": "ha",
+    "de": "ha",
+    "zh": "公顷",
+    "ar": "هكتار",
+    "el": "ha",
+    "af": "ha"
+   },
+   "d": {
+    "pt": "Hectare: 10.000 m². 31.000 ha equivalem a cerca de 310 km².",
+    "en": "Hectare: 10,000 m². 31,000 ha is about 310 km².",
+    "es": "Hectárea: 10.000 m². 31.000 ha equivalen a unos 310 km².",
+    "it": "Ettaro: 10.000 m². 31.000 ha equivalgono a circa 310 km².",
+    "fr": "Hectare : 10 000 m². 31 000 ha représentent environ 310 km².",
+    "de": "Hektar: 10.000 m². 31.000 ha entsprechen etwa 310 km².",
+    "zh": "公顷：10,000 平方米。31,000 公顷约合 310 平方公里。",
+    "ar": "هكتار: 10,000 م². 31,000 هكتار تعادل نحو 310 كم².",
+    "el": "Εκτάριο: 10.000 m². 31.000 ha ισούνται με περίπου 310 km².",
+    "af": "Hektaar: 10 000 m². 31 000 ha is ongeveer 310 km²."
+   }
+  },
+  "mw": {
+   "t": {
+    "pt": "MW",
+    "en": "MW",
+    "es": "MW",
+    "it": "MW",
+    "fr": "MW",
+    "de": "MW",
+    "zh": "MW",
+    "ar": "MW",
+    "el": "MW",
+    "af": "MW"
+   },
+   "d": {
+    "pt": "Megawatt: potência elétrica (1 MW = 1.000 kW). 9.500 MW = potencial total de geração estimado.",
+    "en": "Megawatt: electrical power (1 MW = 1,000 kW). 9,500 MW = estimated total generation potential.",
+    "es": "Megavatio: potencia eléctrica (1 MW = 1.000 kW). 9.500 MW = potencial total de generación estimado.",
+    "it": "Megawatt: potenza elettrica (1 MW = 1.000 kW). 9.500 MW = potenziale totale di generazione stimato.",
+    "fr": "Mégawatt : puissance électrique (1 MW = 1 000 kW). 9 500 MW = potentiel total de production estimé.",
+    "de": "Megawatt: elektrische Leistung (1 MW = 1.000 kW). 9.500 MW = geschätztes gesamtes Erzeugungspotenzial.",
+    "zh": "兆瓦：电功率单位（1 MW = 1,000 kW）。9,500 MW 为估算的总发电潜力。",
+    "ar": "ميغاواط: قدرة كهربائية (1 MW = 1,000 kW). 9,500 MW = إجمالي إمكانات التوليد المقدَّرة.",
+    "el": "Μεγαβάτ: ηλεκτρική ισχύς (1 MW = 1.000 kW). 9.500 MW = εκτιμώμενο συνολικό δυναμικό παραγωγής.",
+    "af": "Megawatt: elektriese drywing (1 MW = 1 000 kW). 9 500 MW = geraamde totale opwekkingspotensiaal."
+   }
+  },
+  "co2": {
+   "t": {
+    "pt": "CO₂ evitado",
+    "en": "CO₂ avoided",
+    "es": "CO₂ evitado",
+    "it": "CO₂ evitata",
+    "fr": "CO₂ évité",
+    "de": "Vermiedenes CO₂",
+    "zh": "减少的 CO₂",
+    "ar": "CO₂ المتجنَّب",
+    "el": "CO₂ που αποφεύχθηκε",
+    "af": "CO₂ vermy"
+   },
+   "d": {
+    "pt": "Toneladas de CO₂ que deixaram de ir para a atmosfera. 953 t = 953 toneladas evitadas.",
+    "en": "Tonnes of CO₂ kept out of the atmosphere. 953 t = 953 tonnes avoided.",
+    "es": "Toneladas de CO₂ que no llegaron a la atmósfera. 953 t = 953 toneladas evitadas.",
+    "it": "Tonnellate di CO₂ non immesse in atmosfera. 953 t = 953 tonnellate evitate.",
+    "fr": "Tonnes de CO₂ non rejetées dans l'atmosphère. 953 t = 953 tonnes évitées.",
+    "de": "Tonnen CO₂, die nicht in die Atmosphäre gelangten. 953 t = 953 Tonnen vermieden.",
+    "zh": "未排入大气的二氧化碳吨数。953 t 即避免了 953 吨。",
+    "ar": "أطنان من CO₂ لم تُطلَق في الغلاف الجوي. 953 t = تجنُّب 953 طنًا.",
+    "el": "Τόνοι CO₂ που δεν εκλύθηκαν στην ατμόσφαιρα. 953 t = 953 τόνοι αποφεύχθηκαν.",
+    "af": "Ton CO₂ wat uit die atmosfeer gehou is. 953 t = 953 ton vermy."
+   }
+  },
+  "replicas": {
+   "t": {
+    "pt": "Réplicas",
+    "en": "Aftershocks",
+    "es": "Réplicas",
+    "it": "Repliche",
+    "fr": "Répliques",
+    "de": "Nachbeben",
+    "zh": "余震",
+    "ar": "توابع زلزالية",
+    "el": "Μετασεισμοί",
+    "af": "Nabewings"
+   },
+   "d": {
+    "pt": "Tremores menores após o terremoto principal. \"50+\" = mais de 50 registrados.",
+    "en": "Smaller quakes following the main earthquake. \"50+\" = more than 50 recorded.",
+    "es": "Temblores menores tras el terremoto principal. \"50+\" = más de 50 registrados.",
+    "it": "Scosse minori dopo il terremoto principale. \"50+\" = più di 50 registrate.",
+    "fr": "Secousses plus faibles après le séisme principal. « 50+ » = plus de 50 enregistrées.",
+    "de": "Schwächere Beben nach dem Hauptbeben. „50+“ = mehr als 50 registriert.",
+    "zh": "主震之后发生的较小地震。“50+”表示记录到 50 次以上。",
+    "ar": "هزات أصغر تعقب الزلزال الرئيسي. «+50» = تسجيل أكثر من 50 هزة.",
+    "el": "Μικρότεροι σεισμοί μετά τον κύριο σεισμό. «50+» = πάνω από 50 καταγραφές.",
+    "af": "Kleiner aardbewings wat op die hoofaardbewing volg. \"50+\" = meer as 50 aangeteken."
+   }
+  },
+  "gbif": {
+   "t": {
+    "pt": "GBIF",
+    "en": "GBIF",
+    "es": "GBIF",
+    "it": "GBIF",
+    "fr": "GBIF",
+    "de": "GBIF",
+    "zh": "GBIF",
+    "ar": "GBIF",
+    "el": "GBIF",
+    "af": "GBIF"
+   },
+   "d": {
+    "pt": "Rede mundial aberta de registros de biodiversidade (Global Biodiversity Information Facility).",
+    "en": "Global Biodiversity Information Facility: an open worldwide database of biodiversity records.",
+    "es": "Red mundial abierta de registros de biodiversidad (Global Biodiversity Information Facility).",
+    "it": "Rete mondiale aperta di registrazioni sulla biodiversità (Global Biodiversity Information Facility).",
+    "fr": "Réseau mondial ouvert de données sur la biodiversité (Global Biodiversity Information Facility).",
+    "de": "Offenes weltweites Netzwerk für Biodiversitätsdaten (Global Biodiversity Information Facility).",
+    "zh": "全球生物多样性信息机构（Global Biodiversity Information Facility），开放的全球生物多样性记录库。",
+    "ar": "الشبكة العالمية المفتوحة لسجلات التنوع البيولوجي (Global Biodiversity Information Facility).",
+    "el": "Ανοιχτό παγκόσμιο δίκτυο καταγραφών βιοποικιλότητας (Global Biodiversity Information Facility).",
+    "af": "Global Biodiversity Information Facility: 'n oop wêreldwye databasis van biodiversiteitsrekords."
+   }
+  },
+  "iqa": {
+   "t": {
+    "pt": "IQA",
+    "en": "IQA",
+    "es": "IQA",
+    "it": "IQA",
+    "fr": "IQA",
+    "de": "IQA",
+    "zh": "IQA",
+    "ar": "IQA",
+    "el": "IQA",
+    "af": "IQA"
+   },
+   "d": {
+    "pt": "Índice de Qualidade da Água, de 0 a 100. 81,9 indica qualidade boa a ótima.",
+    "en": "Water Quality Index (IQA), from 0 to 100. 81.9 means good to excellent quality.",
+    "es": "Índice de Calidad del Agua, de 0 a 100. 81,9 indica calidad buena a excelente.",
+    "it": "Indice di Qualità dell'Acqua, da 0 a 100. 81,9 indica qualità buona od ottima.",
+    "fr": "Indice de qualité de l'eau, de 0 à 100. 81,9 indique une qualité bonne à excellente.",
+    "de": "Wasserqualitätsindex von 0 bis 100. 81,9 bedeutet gute bis sehr gute Qualität.",
+    "zh": "水质指数，范围 0–100。81.9 表示水质良好至优秀。",
+    "ar": "مؤشر جودة المياه من 0 إلى 100. القيمة 81.9 تعني جودة جيدة إلى ممتازة.",
+    "el": "Δείκτης Ποιότητας Νερού, από 0 έως 100. Το 81,9 δείχνει καλή έως άριστη ποιότητα.",
+    "af": "Waterkwaliteitsindeks (IQA), van 0 tot 100. 81,9 beteken goeie tot uitstekende gehalte."
+   }
+  },
+  "anomaly": {
+   "t": {
+    "pt": "Anomalia",
+    "en": "Anomaly",
+    "es": "Anomalía",
+    "it": "Anomalia",
+    "fr": "Anomalie",
+    "de": "Anomalie",
+    "zh": "距平",
+    "ar": "الشذوذ الحراري",
+    "el": "Θερμοκρασιακή ανωμαλία",
+    "af": "Anomalie"
+   },
+   "d": {
+    "pt": "Diferença entre a temperatura de agora e a média histórica de referência. +1,54 °C = 1,54 °C acima dessa média.",
+    "en": "Difference between today’s temperature and the historical reference average. +1.54 °C = 1.54 °C above that average.",
+    "es": "Diferencia entre la temperatura actual y el promedio histórico de referencia. +1,54 °C = 1,54 °C por encima de ese promedio.",
+    "it": "Differenza tra la temperatura attuale e la media storica di riferimento. +1,54 °C = 1,54 °C sopra quella media.",
+    "fr": "Écart entre la température actuelle et la moyenne historique de référence. +1,54 °C = 1,54 °C au-dessus de cette moyenne.",
+    "de": "Abweichung der aktuellen Temperatur vom historischen Referenzmittel. +1,54 °C = 1,54 °C über diesem Mittel.",
+    "zh": "当前气温与历史参考平均值之差。+1.54 °C 表示比该平均值高 1.54 °C。",
+    "ar": "الفرق بين درجة الحرارة الحالية والمتوسط التاريخي المرجعي. +1.54 °م تعني 1.54 °م فوق هذا المتوسط.",
+    "el": "Η διαφορά ανάμεσα στη σημερινή θερμοκρασία και τον ιστορικό μέσο όρο αναφοράς. +1,54 °C = 1,54 °C πάνω από αυτόν τον μέσο όρο.",
+    "af": "Verskil tussen vandag se temperatuur en die historiese verwysingsgemiddelde. +1,54 °C = 1,54 °C bo daardie gemiddelde."
+   }
+  },
+  "capfactor": {
+   "t": {
+    "pt": "Fator de capacidade",
+    "en": "Capacity factor",
+    "es": "Factor de capacidad",
+    "it": "Fattore di capacità",
+    "fr": "Facteur de charge",
+    "de": "Kapazitätsfaktor",
+    "zh": "容量系数",
+    "ar": "عامل السعة",
+    "el": "Συντελεστής χρησιμοποίησης",
+    "af": "Kapasiteitsfaktor"
+   },
+   "d": {
+    "pt": "Quanto da energia máxima possível o vento realmente entrega, em média. 60 % = 60 % do máximo teórico.",
+    "en": "How much of the maximum possible energy the wind actually delivers, on average. 60 % = 60 % of the theoretical maximum.",
+    "es": "Cuánto de la energía máxima posible entrega realmente el viento, en promedio. 60 % = 60 % del máximo teórico.",
+    "it": "Quanta parte della massima energia possibile il vento fornisce davvero, in media. 60 % = 60 % del massimo teorico.",
+    "fr": "Part de l’énergie maximale possible que le vent fournit réellement, en moyenne. 60 % = 60 % du maximum théorique.",
+    "de": "Welcher Anteil der maximal möglichen Energie vom Wind im Durchschnitt tatsächlich geliefert wird. 60 % = 60 % des theoretischen Maximums.",
+    "zh": "风平均实际提供的能量占理论最大值的比例。60 % 表示达到理论最大值的 60 %。",
+    "ar": "مقدار الطاقة القصوى الممكنة التي توفرها الرياح فعليًا في المتوسط. 60 % = 60 % من الحد الأقصى النظري.",
+    "el": "Πόσο από τη μέγιστη δυνατή ενέργεια παρέχει πραγματικά ο άνεμος κατά μέσο όρο. 60 % = 60 % του θεωρητικού μέγιστου.",
+    "af": "Hoeveel van die maksimum moontlike energie die wind gemiddeld werklik lewer. 60 % = 60 % van die teoretiese maksimum."
+   }
+  },
+  "nino34": {
+   "t": {
+    "pt": "Niño 3.4",
+    "en": "Niño 3.4",
+    "es": "Niño 3.4",
+    "it": "Niño 3.4",
+    "fr": "Niño 3.4",
+    "de": "Niño 3.4",
+    "zh": "Niño 3.4",
+    "ar": "Niño 3.4",
+    "el": "Niño 3.4",
+    "af": "Niño 3.4"
+   },
+   "d": {
+    "pt": "Região do Pacífico usada para acompanhar o El Niño. O número é quantos °C a água está acima (+) ou abaixo (−) da média; acima de +0,5 °C por alguns meses seguidos já é El Niño.",
+    "en": "Pacific region used to track El Niño. The number is how many °C the water is above (+) or below (−) average; above +0.5 °C for several months in a row counts as El Niño.",
+    "es": "Región del Pacífico usada para seguir El Niño. El número indica cuántos °C está el agua por encima (+) o por debajo (−) del promedio; por encima de +0,5 °C durante varios meses seguidos ya se considera El Niño.",
+    "it": "Regione del Pacifico usata per seguire El Niño. Il numero indica di quanti °C l’acqua è sopra (+) o sotto (−) la media; oltre +0,5 °C per diversi mesi consecutivi è già El Niño.",
+    "fr": "Région du Pacifique utilisée pour suivre El Niño. Le chiffre indique de combien de °C l’eau est au-dessus (+) ou en dessous (−) de la moyenne ; au-dessus de +0,5 °C pendant plusieurs mois consécutifs, on parle d’El Niño.",
+    "de": "Pazifikregion zur Beobachtung von El Niño. Die Zahl gibt an, um wie viel °C das Wasser über (+) oder unter (−) dem Durchschnitt liegt; über +0,5 °C über mehrere Monate in Folge gilt als El Niño.",
+    "zh": "用于监测厄尔尼诺的太平洋海区。数值表示海水温度比平均值高（+）或低（−）多少 °C；连续数月高于 +0.5 °C 即视为厄尔尼诺。",
+    "ar": "منطقة في المحيط الهادئ تُستخدم لمتابعة ظاهرة إل نينيو. الرقم يبيّن كم درجة مئوية تعلو (+) أو تنخفض (−) حرارة الماء عن المتوسط؛ وإذا تجاوزت +0.5 °م لعدة أشهر متتالية فهي إل نينيو.",
+    "el": "Περιοχή του Ειρηνικού που χρησιμοποιείται για την παρακολούθηση του El Niño. Ο αριθμός δείχνει πόσους °C είναι το νερό πάνω (+) ή κάτω (−) από τον μέσο όρο· πάνω από +0,5 °C για αρκετούς συνεχόμενους μήνες θεωρείται El Niño.",
+    "af": "Streek in die Stille Oseaan wat gebruik word om El Niño te volg. Die getal wys hoeveel °C die water bo (+) of onder (−) die gemiddelde is; bo +0,5 °C vir etlike maande agtereen word as El Niño beskou."
+   }
+  }
+ },
+ "themes": {
+  "temperatures": [
+   "anomaly"
+  ],
+  "solar": [
+   "mwh",
+   "co2"
+  ],
+  "stingless": [
+   "gbif",
+   "vu"
+  ],
+  "wind": [
+   "mw",
+   "capfactor"
+  ],
+  "water": [
+   "iqa"
+  ],
+  "seismic": [
+   "replicas"
+  ],
+  "invasive": [
+   "ha"
+  ],
+  "el-nino": [
+   "nino34"
+  ]
+ }
+}
