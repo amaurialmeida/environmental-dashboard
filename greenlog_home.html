@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        * { box-sizing: border-box; }
+        html, body { 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: #050505; 
+            color: white; 
+            font-family: 'Segoe UI', sans-serif; 
+            overflow: hidden;
+        }
+        .dashboard-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+        .header { 
+            text-align: center; 
+            position: relative;
+            z-index: 10;
+            background: rgba(5, 5, 5, 0.65);
+            backdrop-filter: blur(6px);
+            padding-bottom: 8px;
+        }
+        .main-title { 
+            font-size: 2.2rem; 
+            color: #2ecc71;
+            margin: 2px 0 8px 0;
+            font-weight: 600;
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+        }
+        .lang-buttons {
+            display: flex; 
+            justify-content: center; 
+            gap: 6px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .lang-btn {
+            padding: 4px 10px; 
+            background: rgba(46,204,113,0.12); 
+            color: #2ecc71;
+            border: 1px solid #2ecc71; 
+            border-radius: 16px; 
+            cursor: pointer;
+            font-size: 0.75rem; 
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .lang-btn .fl { width: 1.35em; height: .9em; border-radius: 2px; flex-shrink: 0; display: block; }
+        .lang-btn:hover, .lang-btn.active { 
+            background: #2ecc71; 
+            color: black; 
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
+        }
+
+        /* Container do Mapa Windy (Marca d'água de fundo cobrindo 100%) */
+        .map-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.5;
+            filter: hue-rotate(-15deg) brightness(0.75) contrast(1.2);
+            pointer-events: none;
+        }
+
+        .slide-container {
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            flex-grow: 1;
+            position: relative;
+            z-index: 5;
+            width: 100%;
+        }
+        
+        .kpi-wrapper {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1300px;
+        }
+
+        .number-legend {
+            width: 100%;
+            max-width: 1300px;
+            margin: 12px auto 0;
+            padding: 8px 14px;
+            color: #eaff00;
+            text-align: center;
+            font-size: 0.76rem;
+            line-height: 1.45;
+            text-shadow: 0 0 8px rgba(234, 255, 0, 0.28);
+        }
+        .number-legend-title {
+            margin-bottom: 4px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .number-legend-items {
+            display: flex;
+            justify-content: center;
+            gap: 4px 18px;
+            flex-wrap: wrap;
+        }
+        .number-legend-item { white-space: nowrap; }
+        .number-legend-item strong { font-weight: 800; }
+
+        .kpi-card {
+            background: rgba(10, 20, 35, 0.88);
+            border: 2px solid #2ecc71;
+            border-radius: 16px;
+            padding: 22px 15px;
+            flex: 1;
+            min-width: 220px;
+            max-width: 280px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(46, 204, 113, 0.25);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .kpi-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 40px rgba(46, 204, 113, 0.6);
+            border-color: #2ecc71;
+        }
+
+        .kpi-number { 
+            font-size: 2.8rem; 
+            font-weight: bold; 
+            color: #2ecc71; 
+            margin: 6px 0; 
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+        }
+        .kpi-label { 
+            font-size: 0.95rem; 
+            color: #cbd5e1; 
+            margin-bottom: 4px; 
+            font-weight: 500;
+        }
+        .delta { 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+        }
+        
+        .bottom-bar {
+            text-align: center;
+            font-size: 0.8rem; 
+            color: #94a3b8;
+            z-index: 10;
+            background: rgba(10, 20, 35, 0.8);
+            padding: 8px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            backdrop-filter: blur(5px);
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .bottom-bar { cursor: pointer; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .bottom-bar:hover, .bottom-bar:focus-visible { border-color: #2ecc71; box-shadow: 0 0 18px rgba(46, 204, 113, 0.55); outline: none; }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(5,5,5,0.1) 0%, rgba(5,5,5,0.85) 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-background">
+        <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://embed.windy.com/embed2.html?lat=-15.783&lon=-47.867&detailLat=-15.783&detailLon=-47.867&width=1200&height=800&zoom=3&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1" 
+            frameborder="0"
+            style="border:0;">
+        </iframe>
+    </div>
+    
+    <div class="overlay"></div>
+
+    <div class="dashboard-wrapper">
+        <div class="header">
+            <div class="main-title" id="main-title">Dados para um planeta mais verde!</div>
+            
+            <div class="lang-buttons">
+                <div class="lang-btn" id="btn-pt" onclick="setLanguage('pt')" title="PT"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#009c3b"/><polygon points="15,2.2 27.2,10 15,17.8 2.8,10" fill="#ffdf00"/><circle cx="15" cy="10" r="4.4" fill="#002776"/><path d="M10.7 9.1c3-.8 6.3-.3 8.8 1.4" stroke="#fff" stroke-width=".9" fill="none"/></svg><span>PT</span></div>
+                <div class="lang-btn" id="btn-en" onclick="setLanguage('en')" title="EN"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect y="0.000" width="30" height="1.538" fill="#b22234"/><rect y="1.538" width="30" height="1.538" fill="#fff"/><rect y="3.077" width="30" height="1.538" fill="#b22234"/><rect y="4.615" width="30" height="1.538" fill="#fff"/><rect y="6.154" width="30" height="1.538" fill="#b22234"/><rect y="7.692" width="30" height="1.538" fill="#fff"/><rect y="9.231" width="30" height="1.538" fill="#b22234"/><rect y="10.769" width="30" height="1.538" fill="#fff"/><rect y="12.308" width="30" height="1.538" fill="#b22234"/><rect y="13.846" width="30" height="1.538" fill="#fff"/><rect y="15.385" width="30" height="1.538" fill="#b22234"/><rect y="16.923" width="30" height="1.538" fill="#fff"/><rect y="18.462" width="30" height="1.538" fill="#b22234"/><rect width="13" height="10.8" fill="#3c3b6e"/><circle cx="1.80" cy="1.60" r=".42" fill="#fff"/><circle cx="4.30" cy="1.60" r=".42" fill="#fff"/><circle cx="6.80" cy="1.60" r=".42" fill="#fff"/><circle cx="9.30" cy="1.60" r=".42" fill="#fff"/><circle cx="11.80" cy="1.60" r=".42" fill="#fff"/><circle cx="3.05" cy="3.25" r=".42" fill="#fff"/><circle cx="5.55" cy="3.25" r=".42" fill="#fff"/><circle cx="8.05" cy="3.25" r=".42" fill="#fff"/><circle cx="10.55" cy="3.25" r=".42" fill="#fff"/><circle cx="1.80" cy="4.90" r=".42" fill="#fff"/><circle cx="4.30" cy="4.90" r=".42" fill="#fff"/><circle cx="6.80" cy="4.90" r=".42" fill="#fff"/><circle cx="9.30" cy="4.90" r=".42" fill="#fff"/><circle cx="11.80" cy="4.90" r=".42" fill="#fff"/><circle cx="3.05" cy="6.55" r=".42" fill="#fff"/><circle cx="5.55" cy="6.55" r=".42" fill="#fff"/><circle cx="8.05" cy="6.55" r=".42" fill="#fff"/><circle cx="10.55" cy="6.55" r=".42" fill="#fff"/><circle cx="1.80" cy="8.20" r=".42" fill="#fff"/><circle cx="4.30" cy="8.20" r=".42" fill="#fff"/><circle cx="6.80" cy="8.20" r=".42" fill="#fff"/><circle cx="9.30" cy="8.20" r=".42" fill="#fff"/><circle cx="11.80" cy="8.20" r=".42" fill="#fff"/></svg><span>EN</span></div>
+                <div class="lang-btn" id="btn-es" onclick="setLanguage('es')" title="ES"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#aa151b"/><rect y="5" width="30" height="10" fill="#f1bf00"/></svg><span>ES</span></div>
+                <div class="lang-btn" id="btn-it" onclick="setLanguage('it')" title="IT"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect width="10" height="20" fill="#009246"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ce2b37"/></svg><span>IT</span></div>
+                <div class="lang-btn" id="btn-fr" onclick="setLanguage('fr')" title="FR"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect width="10" height="20" fill="#0055a4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ef4135"/></svg><span>FR</span></div>
+                <div class="lang-btn" id="btn-de" onclick="setLanguage('de')" title="DE"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect width="30" height="6.67" fill="#000"/><rect y="6.67" width="30" height="6.67" fill="#dd0000"/><rect y="13.33" width="30" height="6.67" fill="#ffce00"/></svg><span>DE</span></div>
+                <div class="lang-btn" id="btn-zh" onclick="setLanguage('zh')" title="ZH"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#de2910"/><polygon points="5.00,2.00 5.71,4.03 7.85,4.07 6.14,5.37 6.76,7.43 5.00,6.20 3.24,7.43 3.86,5.37 2.15,4.07 4.29,4.03" fill="#ffde00"/><polygon points="10.00,1.00 10.24,1.68 10.95,1.69 10.38,2.12 10.59,2.81 10.00,2.40 9.41,2.81 9.62,2.12 9.05,1.69 9.76,1.68" fill="#ffde00"/><polygon points="12.00,3.50 12.24,4.18 12.95,4.19 12.38,4.62 12.59,5.31 12.00,4.90 11.41,5.31 11.62,4.62 11.05,4.19 11.76,4.18" fill="#ffde00"/><polygon points="12.00,6.50 12.24,7.18 12.95,7.19 12.38,7.62 12.59,8.31 12.00,7.90 11.41,8.31 11.62,7.62 11.05,7.19 11.76,7.18" fill="#ffde00"/><polygon points="10.00,9.00 10.24,9.68 10.95,9.69 10.38,10.12 10.59,10.81 10.00,10.40 9.41,10.81 9.62,10.12 9.05,9.69 9.76,9.68" fill="#ffde00"/></svg><span>ZH</span></div>
+                <div class="lang-btn" id="btn-ar" onclick="setLanguage('ar')" title="AR"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#006c35"/><rect x="7" y="7" width="16" height="1.8" rx=".9" fill="#fff"/><rect x="8" y="10.4" width="14" height="1.1" fill="#fff"/><rect x="19.5" y="12.4" width="4.5" height=".9" fill="#fff"/></svg><span>AR</span></div>
+                <div class="lang-btn" id="btn-el" onclick="setLanguage('el')" title="EL"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect y="0.000" width="30" height="2.222" fill="#0d5eaf"/><rect y="2.222" width="30" height="2.222" fill="#fff"/><rect y="4.444" width="30" height="2.222" fill="#0d5eaf"/><rect y="6.667" width="30" height="2.222" fill="#fff"/><rect y="8.889" width="30" height="2.222" fill="#0d5eaf"/><rect y="11.111" width="30" height="2.222" fill="#fff"/><rect y="13.333" width="30" height="2.222" fill="#0d5eaf"/><rect y="15.556" width="30" height="2.222" fill="#fff"/><rect y="17.778" width="30" height="2.222" fill="#0d5eaf"/><rect width="11.1" height="11.1" fill="#0d5eaf"/><rect x="4.4" width="2.3" height="11.1" fill="#fff"/><rect y="4.4" width="11.1" height="2.3" fill="#fff"/></svg><span>EL</span></div>
+            </div>
+        </div>
+        
+        <div id="slideContainer" class="slide-container"></div>
+
+        <div class="bottom-bar" id="bottom-text" role="button" tabindex="0" onclick="openRouter()" onkeydown="if(event.key==='Enter'||event.key===' '){openRouter()}">
+            👇 Clique nos botões acima ou aguarde a transição automática
+        </div>
+    </div>
+
+    <script>
+        let currentLang = '__LANG__';
+        let currentSlide = 0;
+
+        const translations = /*__TRANSLATIONS__*/;
+
+        const themes = /*__THEMES__*/;
+
+        function openRouter() {
+            try {
+                const links = parent.document.querySelectorAll('[data-testid="stSidebarNavLink"]');
+                for (const a of links) {
+                    if ((a.getAttribute('href') || '').indexOf('signal-router') > -1) { a.click(); return; }
+                }
+            } catch (e) {}
+            try { window.open(parent.location.origin + '/signal-router', '_top'); }
+            catch (e) { window.open('/signal-router', '_blank'); }
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('main-title').textContent = translations[lang].title;
+            document.getElementById('bottom-text').textContent = translations[lang].bottom;
+            document.getElementById('bottom-text').title = translations[lang].open || '';
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+            renderSlide(currentSlide);
+        }
+
+        const LOCALES = {pt:'pt-BR', en:'en-US', es:'es-ES', it:'it-IT', fr:'fr-FR', de:'de-DE', zh:'zh-CN', ar:'ar-EG-u-nu-latn', el:'el-GR'};
+
+        function fmt(value, kpi) {
+            const dec = (String(kpi.value).split('.')[1] || '').length;
+            return value.toLocaleString(LOCALES[currentLang] || 'pt-BR', {
+                minimumFractionDigits: dec, maximumFractionDigits: dec,
+                useGrouping: kpi.fmt !== 'year'
+            }) + (kpi.unit ? ' ' + kpi.unit : '');
+        }
+
+        function animateCount(element, kpi) {
+            const end = kpi.value;
+            const dec = (String(end).split('.')[1] || '').length;
+            const duration = 1600;
+            const startTime = Date.now();
+
+            function update() {
+                const progress = Math.min((Date.now() - startTime) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const v = ease * end;
+                element.textContent = fmt(dec ? v : Math.floor(v), kpi);
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = fmt(end, kpi);
+                }
+            }
+            update();
+        }
+
+        function renderSlide(index) {
+            const theme = themes[index];
+            const container = document.getElementById('slideContainer');
+            
+            let html = `
+                <div style="font-size: 1.4rem; color: #2ecc71; margin-bottom: 12px; font-weight: 600; text-shadow: 0 0 10px rgba(46,204,113,0.4);">
+                    ${theme.name[currentLang] || theme.name['pt']}
+                </div>
+                <div class="kpi-wrapper">
+            `;
+            
+            theme.kpis.forEach((kpi, i) => {
+                const labelText = kpi.label[currentLang] || kpi.label['pt'];
+                html += `
+                    <div class="kpi-card">
+                        <div class="kpi-label">${labelText}</div>
+                        <div class="kpi-number" id="val-${index}-${i}">0</div>
+                        ${kpi.delta ? `<div class="delta" style="color: ${kpi.delta.includes('↑') ? '#2ecc71' : '#e74c3c'}">${kpi.delta}</div>` : ''}
+                    </div>
+                `;
+            });
+            
+            const legend = translations[currentLang].legend || translations['pt'].legend;
+            html += `
+                </div>
+                <div class="number-legend" aria-label="${translations[currentLang].legendTitle || translations['pt'].legendTitle}">
+                    <div class="number-legend-title">${translations[currentLang].legendTitle || translations['pt'].legendTitle}</div>
+                    <div class="number-legend-items">
+                        ${legend.map(item => `<span class="number-legend-item"><strong>${item.term}</strong>: ${item.text}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+            container.innerHTML = html;
+            
+            theme.kpis.forEach((kpi, i) => {
+                const el = document.getElementById(`val-${index}-${i}`);
+                if (el) {
+                    animateCount(el, kpi);
+                }
+            });
+        }
+
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % themes.length;
+            renderSlide(currentSlide);
+        }, 6000);
+
+        setLanguage(currentLang);
+    </script>
+</body>
+</html>
